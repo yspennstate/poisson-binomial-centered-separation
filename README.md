@@ -1,4 +1,4 @@
-# Kolmogorov separation of centered Poisson-binomial pairs
+# A lower bound for the Kolmogorov distance between centered Poisson binomial pairs
 
 Yitzchak Shmalo, 16 November 2026.
 

@@ -15,9 +15,9 @@
 \usepackage[capitalise,nameinlink,noabbrev]{cleveref}
 \definecolor{linkblue}{RGB}{22,68,105}
 \hypersetup{colorlinks=true,linkcolor=linkblue,citecolor=linkblue,urlcolor=linkblue,
-  pdftitle={Kolmogorov separation of centered Poisson-binomial pairs},
+  pdftitle={A lower bound for the Kolmogorov distance between centered Poisson binomial pairs},
   pdfauthor={Yitzchak Shmalo},
-  pdfsubject={Poisson binomial distribution, Kolmogorov distance, Hoeffding's inequality}}
+  pdfsubject={Poisson binomial distribution, Kolmogorov distance, Hoeffding's comparison theorem for Bernoulli sums}}
 \urlstyle{same}
 \setlength{\parindent}{1.2em}
 \setlength{\parskip}{0.2em}
@@ -33,12 +33,12 @@
 \newcommand{\Bin}{\operatorname{Bin}}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small Centered Poisson-binomial pairs}
+\fancyhead[L]{\small Kolmogorov distance of centered Poisson binomial pairs}
 \fancyhead[R]{\small 16 November 2026}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 
-\title{Kolmogorov separation of centered Poisson-binomial pairs}
+\title{A lower bound for the Kolmogorov distance between centered Poisson binomial pairs}
 \author{Yitzchak Shmalo\\[0.4em]
 \small Einstein Institute of Mathematics, The Hebrew University of Jerusalem\\
 \small Givat Ram, Jerusalem, Israel}
@@ -49,15 +49,15 @@
 \thispagestyle{fancy}
 
 \begin{abstract}
-Let $X$ and $Y$ be sums of $n$ independent Bernoulli variables with parameters $p_i\ge q_i$. Aryeh Kontorovich conjectured that for even $n$ the Kolmogorov distance between $X$ and $Y$ is at least the distance between $\Bin(n,(1+g)/2)$ and $\Bin(n,(1-g)/2)$, where $g$ is the mean of the gaps $p_i-q_i$. We prove two centered cases, in which $\sum_i(p_i+q_i)=n$. When all gaps are equal, both sums are built from one sum of independent Bernoulli variables with mean $n/2$. Hoeffding's interval comparison for that sum shows, for every even $n\ge4$, that the excess over the binomial value is a sum of nonnegative terms, bounded below by a positive multiple of $\sum_i(p_i+q_i-1)^2$. For four summands we prove the centered case with arbitrary gaps and compute the excess exactly. When the gaps are not all zero, equality holds in both cases only for the symmetric binomial pair. The conjecture without centering remains open.
+Let $X$ and $Y$ be sums of $n$ independent Bernoulli variables with parameters $p_i\ge q_i$. Aryeh Kontorovich conjectured that for even $n$ the Kolmogorov distance between $X$ and $Y$ is at least the distance between $\Bin(n,(1+g)/2)$ and $\Bin(n,(1-g)/2)$, where $g$ is the mean of the gaps $p_i-q_i$. We prove two centered cases, in which $\sum_i(p_i+q_i)=n$. When all gaps are equal, both sums are built from one sum of independent Bernoulli variables with mean $n/2$. Hoeffding's comparison of that sum with the binomial law shows, for every even $n\ge4$, that the distance exceeds the binomial value by at least a positive multiple of $\sum_i(p_i+q_i-1)^2$. For four summands we prove the centered case with arbitrary gaps, with an exact formula. When the gaps are not all zero, equality holds in both cases only for the binomial pair itself. The conjecture without centering remains open.
 \end{abstract}
 
-\noindent\textit{Keywords:} Poisson binomial distribution, Kolmogorov distance, sums of independent Bernoulli variables, Hoeffding's inequality.\\
+\noindent\textit{Keywords:} Poisson binomial distribution, Kolmogorov distance, sums of independent Bernoulli variables, Hoeffding's comparison theorem for Bernoulli sums.\\
 \textit{2020 Mathematics Subject Classification:} 60E15, 60C05.
 
 \section{Introduction}\label{sec:intro}
 
-Let $X=X_1+\dots+X_n$ and $Y=Y_1+\dots+Y_n$, where the $X_i$ are independent Bernoulli$(p_i)$ variables and the $Y_i$ are independent Bernoulli$(q_i)$ variables, and suppose $p_i\ge q_i$ for every $i$. Only the laws of $X$ and $Y$ matter, so no coupling between the two sums is assumed. Write
+Let $X=X_1+\dots+X_n$ and $Y=Y_1+\dots+Y_n$, where the $X_i$ are independent Bernoulli$(p_i)$ variables and the $Y_i$ are independent Bernoulli$(q_i)$ variables, and suppose $p_i\ge q_i$ for every $i$. The laws of $X$ and $Y$ are Poisson binomial laws, and only these laws matter, so no coupling between the two sums is assumed. Write
 \[
 d_i=p_i-q_i,\qquad s_i=p_i+q_i-1,\qquad \Delta=\sum_i d_i,\qquad g=\frac{\Delta}{n},\qquad S_2=\sum_i s_i^2,
 \]
@@ -65,25 +65,29 @@ and $D_k=\Pp(X\ge k)-\Pp(Y\ge k)$, where $\Pp$ denotes probability. A coordinate
 \[
 b_n(g)=\Pp\{\Bin(n,\tfrac{1+g}2)\ge\tfrac n2\}-\Pp\{\Bin(n,\tfrac{1-g}2)\ge\tfrac n2\}.
 \]
-Aryeh Kontorovich asked on MathOverflow~\cite{Kontorovich} whether
+Aryeh Kontorovich posed on MathOverflow~\cite{Kontorovich}, as a question, the conjecture that
 \begin{equation}\label{eq:conj}
 d_K(X,Y)\ge b_n(g)\qquad\text{for every even } n.
 \end{equation}
-The right side is the Kolmogorov distance of the symmetric binomial pair with the same mean gap; it is attained at $k=n/2$. Since $p_i=(1+s_i+d_i)/2$ and $q_i=(1+s_i-d_i)/2$, both lie in $[0,1]$ precisely when $|s_i|+d_i\le1$; we then call $(s,d)$ feasible.
+The right side is the Kolmogorov distance of the symmetric binomial pair $\Bin(n,\frac{1+g}2)$, $\Bin(n,\frac{1-g}2)$, which has the same mean gap; it is attained at $k=n/2$. Since $p_i=(1+s_i+d_i)/2$ and $q_i=(1+s_i-d_i)/2$, both lie in $[0,1]$ precisely when $|s_i|+d_i\le1$; we then call $(s,d)$ feasible.
 
-Two answers to the question contain partial results. Thomas Steinke~\cite{Steinke} uses the Neyman--Pearson lemma to show that~\eqref{eq:conj} follows from a stronger inequality for the total variation distance between the product measures, and proves that inequality up to a factor of two by mapping each pair of Bernoulli laws to a symmetric pair with a randomized function. Will Sawin~\cite{Sawin} uses the one-sided form of the extremal comparison of Wassily Hoeffding~\cite{Hoeffding} for sums of independent Bernoulli variables with a fixed mean. If an integer $k$ lies strictly between $\E Y+1$ and $\E X$, then $\Pp(X\ge k)$ is at least, and $\Pp(Y\ge k)$ at most, the same tail for the binomial law with the same mean, so $D_k$ is bounded below by a difference of two binomial tails. Such a $k$ exists when $g>2/n$. What remains is to show that, among pairs of binomial laws whose means differ by $ng$, this difference at such a $k$ is smallest for the pair symmetric about $n/2$; Sawin leaves this step unchecked. In later papers Kontorovich~\cite{KontorovichTV,KontorovichHom} proves that replacing every parameter by the mean parameter of its family decreases the total variation distance between Bernoulli products, and between general products, at most by a universal constant factor; for Bernoulli products the best constant is at most $8/9$~\cite{KontorovichTV}. These inequalities concern total variation and lose a constant factor, so they do not give~\eqref{eq:conj}.
+Two answers on MathOverflow contain partial results. Thomas Steinke~\cite{Steinke} uses the Neyman--Pearson lemma to show that~\eqref{eq:conj} follows from an inequality for the total variation distance between the two product measures, and proves that inequality up to a factor of two by mapping each pair of Bernoulli laws to a symmetric pair with a randomized function. Will Sawin~\cite{Sawin} applies Wassily Hoeffding's tail comparison~\cite{Hoeffding} to $X$ and $Y$: if an integer $k$ satisfies $\E Y+1<k<\E X$, then $\Pp(X\ge k)$ is at least, and $\Pp(Y\ge k)$ at most, the corresponding tail of the binomial law with the same mean, so $D_k$ is bounded below by a difference of two binomial tails. Such a $k$ is guaranteed only when $g>2/n$. The argument also needs a second step that is not proved in~\cite{Sawin}: among pairs of binomial laws whose means differ by $ng$, the difference of tails at such a $k$ is smallest for the pair symmetric about $n/2$. Leon Jay Gleser~\cite{Gleser} sharpens Hoeffding's tail comparison to Schur-convexity statements for the distribution function, but these compare one sum with the binomial law of the same mean and do not supply that step; Wenpin Tang and Fengmin Tang~\cite{TangTang} survey these and other properties of Poisson binomial laws. In later papers Kontorovich~\cite{KontorovichTV,KontorovichHom} proves that the total variation distance between two products of Bernoulli laws, and more generally of arbitrary laws, is at least a universal constant times the distance between the products in which every factor is replaced by the average of its family; for Bernoulli products the best such constant is at most $8/9$~\cite{KontorovichTV}. These inequalities concern total variation and lose a constant factor, so they do not give~\eqref{eq:conj}.
 
-We prove~\eqref{eq:conj} in two centered cases, that is, when $\sum_i s_i=0$, or equivalently $\E X+\E Y=n$.
+We prove~\eqref{eq:conj} when $\sum_is_i=0$, or equivalently $\E X+\E Y=n$, in two cases: all gaps equal with $n=2m\ge4$, and $n=4$ with arbitrary gaps. In the first case no integer between the means is needed. Put $a=1-g$, let $R_1,\dots,R_n$ be independent Bernoulli$(r_i)$ variables with $r_i=(1+s_i/a)/2$, let $Z_1,\dots,Z_n$ be independent Bernoulli$(g)$ variables, independent of the $R_i$, and put $W=R_1+\dots+R_n$. Then $\max(R_i,Z_i)$ has the law of $X_i$, $R_i(1-Z_i)$ has the law of $Y_i$, and $\E W=n/2=m$ for every $g$. Since $m$ is an integer, Hoeffding's interval comparison~\cite[Theorem~5]{Hoeffding}, stated in \cref{sec:equal}, gives $\Pp(|W-m|\le j)\ge\Pp(|B_0-m|\le j)$ for every $j$, where $B_0$ has the law $\Bin(2m,\frac12)$. Conditioning on $W$ writes $(D_m+D_{m+1})/2$ as $\E\phi(W)$ for an explicit function $\phi$ that is symmetric about $m$ and increases towards $m$, and hence as a combination of these interval probabilities:
+\[
+\frac{D_m+D_{m+1}}2-b_{2m}(g)=\sum_{j=0}^{m-1}A_j\Bigl(\Pp(|W-m|\le j)-\Pp(|B_0-m|\le j)\Bigr)\ \ge0,
+\]
+where the jumps $A_j=\phi(m-j)-\phi(m-j-1)$ of $\phi$ are positive and given explicitly in~\eqref{eq:jumps}. With coefficients $2j+1$ in place of $A_j$, the same differences sum to $\operatorname{Var}B_0-\operatorname{Var}W=S_2/(4a^2)$, and this gives the term in $S_2$ in~\eqref{eq:equal}.
 
 \begin{theorem}[equal gaps]\label{thm:equal}
 Let $n=2m\ge4$, suppose $d_i=g$ for every $i$, and suppose $\sum_i s_i=0$. Then
 \begin{equation}\label{eq:equal}
 \frac{D_m+D_{m+1}}2\ge b_{2m}(g)+\frac{m+1}{24}\,g^{m-1}(1-g)^{m-2}S_2 .
 \end{equation}
-In particular $d_K(X,Y)\ge b_n(g)$, and for $g>0$ equality holds only when every $s_i$ vanishes.
+In particular $d_K(X,Y)\ge b_n(g)$, and for $g>0$ equality $d_K(X,Y)=b_n(g)$ holds only when every $s_i$ vanishes.
 \end{theorem}
 
-The excess $(D_m+D_{m+1})/2-b_{2m}(g)$ has an exact expression as a sum of nonnegative terms, given in~\eqref{eq:exact}, and~\eqref{eq:cstar} gives a coefficient of $S_2$ at least as large as the one in~\eqref{eq:equal}. For $n=2$ the central average $(D_1+D_2)/2$ equals $b_2(g)=g$ for every centered pair with equal gaps (\cref{rem:n2}), so no positive multiple of $S_2$ can be added there.
+The difference $(D_m+D_{m+1})/2-b_{2m}(g)$ has an exact expression as a sum of nonnegative terms, given in~\eqref{eq:exact}, and~\eqref{eq:cstar} gives a coefficient of $S_2$ at least as large as the one in~\eqref{eq:equal}. For $n=2$ the average $(D_1+D_2)/2$ equals $b_2(g)=g$ for every centered pair with equal gaps (\cref{rem:n2}), so no positive multiple of $S_2$ can be added there.
 
 \begin{theorem}[four summands]\label{thm:four}
 Let $n=4$ and $\sum_i s_i=0$, with arbitrary gaps $d_i\ge0$. Put
@@ -91,14 +95,14 @@ Let $n=4$ and $\sum_i s_i=0$, with arbitrary gaps $d_i\ge0$. Put
 Q=\sum_i\Bigl(d_i-\frac\Delta2\Bigr)s_i^2,\qquad
 L=\sum_i s_id_i+3\sum_i\Bigl(d_i\prod_{j\ne i}s_j+s_i\prod_{j\ne i}d_j\Bigr).
 \]
-Then $Q\le|L|$; if $Q>0$ then $|L|\ge\frac83Q$, and the constant $\frac83$ cannot be increased. Consequently
+If $(s,d)$ is feasible, then $Q\le|L|$; if $Q>0$ then $|L|\ge\frac83Q$, and the constant $\frac83$ cannot be increased. Consequently
 \begin{equation}\label{eq:four}
 \max(D_2,D_3)-b_4(g)=\frac1{384}\sum_{i<j}(d_i-d_j)^2\bigl[5\Delta-4(d_i+d_j)\bigr]+\frac{|L|-Q}8\ \ge0 .
 \end{equation}
 For $\Delta>0$, equality $d_K(X,Y)=b_4(g)$ holds only for the symmetric binomial pair.
 \end{theorem}
 
-For centered pairs with equal gaps the proof of \cref{thm:equal} avoids the integer condition. Each $X_i$ and $Y_i$ is built from one Bernoulli variable $R_i$ and an independent Bernoulli$(g)$ variable, where $W=R_1+\dots+R_n$ has $\E W=m$ for every $g$. Since $m$ is an integer, Hoeffding's interval comparison applies to $W$ and yields
+For $n=4$, $(D_2+D_3)/2$ and $D_2-D_3$ are explicit polynomials in $(s,d)$, given in~\eqref{eq:avg4} and~\eqref{eq:diff4}, and $\max(D_2,D_3)-b_4(g)$ is the expression~\eqref{eq:four}. The inequality $Q\le|L|$ needs proof only when $Q>0$. In that case some $s_i^2$ exceeds $S_2/2$, and after the reflection $s\mapsto-s$ the inequality follows from an inequality in three variables (\cref{lem:three}).
 \[
 \frac{D_m+D_{m+1}}2-b_{2m}(g)=\sum_{j=0}^{m-1}A_j\Bigl(\Pp(|W-m|\le j)-\Pp(|B_0-m|\le j)\Bigr),\qquad B_0\overset d=\Bin(2m,\tfrac12),
 \]
@@ -275,7 +279,7 @@ The research presented in this paper was supported by the European Research Coun
 This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent memory in which the agents record claims, proofs, failed attempts and methods, retrieve one another's results, coordinate who works on what, and audit each other's work. The method is described in~\cite{MathBrainPaper}.
 
 \section*{Declaration of competing interest}
-The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital. These entities are included in the funding declaration above.
+The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital. These entities are listed under Acknowledgments and funding above.
 
 \section*{Code and data availability}
 The \LaTeX\ source and the programs are available at \url{https://github.com/yspennstate/poisson-binomial-centered-separation}. They verify the identities~\eqref{eq:avg4},~\eqref{eq:diff4},~\eqref{eq:Q},~\eqref{eq:affine},~\eqref{eq:regroup},~\eqref{eq:gap} and the expansion in the proof of \cref{lem:three} in exact rational arithmetic, and evaluate~\eqref{eq:average},~\eqref{eq:jumps},~\eqref{eq:exact},~\eqref{eq:variance} and~\eqref{eq:equal} by exact convolution for $1{,}335$ rational parameter vectors with $n\le20$.
@@ -293,33 +297,35 @@ symbol & meaning & defined in\\
 \midrule
 $X_i,Y_i,X,Y$ & Bernoulli$(p_i)$ and Bernoulli$(q_i)$ variables and their sums & \cref{sec:intro}\\
 $n$, $m$ & number of summands; $n=2m$ when $n$ is even & \cref{sec:intro}\\
-$d_i,s_i$ & gap $p_i-q_i$ and offset $p_i+q_i-1$ & \cref{sec:intro}\\
+$d_i,s_i$ & $p_i-q_i$ and $p_i+q_i-1$ & \cref{sec:intro}\\
 $\Delta,g,S_2$ & $\sum_id_i$, mean gap $\Delta/n$, $\sum_is_i^2$ & \cref{sec:intro}\\
 $\Pp,\E$ & probability and expectation & \cref{sec:intro}\\
 $k$, $D_k$, $d_K$ & integer threshold; $\Pp(X\ge k)-\Pp(Y\ge k)$; Kolmogorov distance & \cref{sec:intro}\\
 $\Bin(n,p)$, $b_n(g)$ & binomial variable; Kolmogorov distance of the symmetric binomial pair & \cref{sec:intro}\\
 $Q,L$ & the two polynomials of \cref{thm:four} & \cref{thm:four}\\
-$\ell_1,\ell_2$, $\bar r$ & integer endpoints in Hoeffding's comparison; mean parameter of $W$ & \cref{sec:equal}\\
+$\ell_1,\ell_2$, $\bar r$ & integer endpoints in Hoeffding's interval comparison; mean parameter of $W$ & \cref{sec:equal}\\
 $w$ & a value of $W$ & proof of \cref{thm:equal}\\
-$a$, $r_i$ & $1-g$; baseline parameters $(1+s_i/a)/2$ & proof of \cref{thm:equal}\\
+$a$, $r_i$ & $1-g$; $(1+s_i/a)/2$ & proof of \cref{thm:equal}\\
 $R_i,Z_i,W$ & the Bernoulli$(r_i)$ and Bernoulli$(g)$ variables of the construction, $\sum_iR_i$ & proof of \cref{thm:equal}\\
-$\widetilde X_i,\widetilde Y_i$ & coupled copies of $X_i,Y_i$ & proof of \cref{thm:equal}\\
+$\widetilde X_i,\widetilde Y_i$ & copies of $X_i,Y_i$ built from $R_i,Z_i$ & proof of \cref{thm:equal}\\
 $\mathbf 1$ & indicator & proof of \cref{thm:equal}\\
-$h$, $\phi$ & sign of $k-m$; conditional central average & proof of \cref{thm:equal}\\
+$h$, $\phi$ & sign of $k-m$; the value of $(D_m+D_{m+1})/2$ given $W=w$ & proof of \cref{thm:equal}\\
 $B,B',\xi$ & $\Bin(m+j,g)$, $B+\xi$, a Bernoulli$(g)$ variable & proof of \cref{thm:equal}\\
 $A_j$ & jumps of $\phi$ & proof of \cref{thm:equal}\\
 $B_0$, $\delta_j$ & $\Bin(2m,\frac12)$; interval probability difference of $W$ and $B_0$ & proof of \cref{thm:equal}\\
 $c^*_{2m}(g)$ & best coefficient given by~\eqref{eq:variance} & \eqref{eq:cstar}\\
-$y_i,v_i,U,F$ & variables and quantities of \cref{lem:three} & \cref{lem:three}\\
+$y_i$, $v_i,U,F$ & variables of \cref{lem:three}, later coordinates of $s$; quantities of \cref{lem:three} & \cref{lem:three}\\
 $M$, $e_k$ & four-bit majority sign; elementary symmetric polynomials & proof of \cref{thm:four}\\
-$x,t,y_i,u_i,\sigma$ & coordinates of $s$ and $d$; $\sum_iu_i$ & proof of \cref{thm:four}\\
+$x,t,u_i,\sigma$ & coordinates of $s$ and $d$; $\sum_iu_i$ & proof of \cref{thm:four}\\
 $\rho,\kappa,\theta_i$ & $\sum_iy_i^2$, $(1-\rho)/2$, $(1+\rho)/2-y_i^2$ & proof of \cref{thm:four}\\
-$C,G,V$ & slope and intercept of $L/x$; the sum $V$ & proof of \cref{thm:four}\\
+$C,G,V$ & slope and intercept of $L/x$; an auxiliary sum & proof of \cref{thm:four}\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
+
+\bibitem{Gleser} L.~J.~Gleser, On the distribution of the number of successes in independent trials, \emph{Ann. Probab.} \textbf{3} (1975), no.~1, 182--188, doi:10.1214/aop/1176996461.
 
 \bibitem{Hoeffding} W.~Hoeffding, On the distribution of the number of successes in independent trials, \emph{Ann. Math. Statist.} \textbf{27} (1956), no.~3, 713--721, doi:10.1214/aoms/1177728178.
 
@@ -338,6 +344,8 @@ $C,G,V$ & slope and intercept of $L/x$; the sum $V$ & proof of \cref{thm:four}\\
 \bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public}.
 
 \bibitem{Steinke} T.~Steinke, answer to MathOverflow question 477402 (2024), \url{https://mathoverflow.net/a/477441}.
+
+\bibitem{TangTang} W.~Tang and F.~Tang, The Poisson binomial distribution---old \& new, \emph{Statist. Sci.} \textbf{38} (2023), no.~1, 108--119, doi:10.1214/22-STS852.
 
 \end{thebibliography}
 \end{document}
