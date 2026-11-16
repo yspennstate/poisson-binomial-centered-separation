@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "central average and signed contrast: zero polynomial residuals",
+    "gap Maclaurin sum-of-squares: zero polynomial residual",
+    "six-vertex simplex lemma: exact nonnegative cubic certificate",
+    "dominant midpoint/gap substitutions and affine decomposition: zero polynomial residuals"
+  ],
+  "nonzero_residual_monomials": 0,
+  "seconds": 0.023099300102330744
+}
