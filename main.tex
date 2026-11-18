@@ -79,11 +79,7 @@ Leon Jay Gleser~\cite{Gleser} sharpens Hoeffding's tail comparison to Schur-conv
 
 We call the pair centered when $\sum_is_i=0$, that is, $\E X+\E Y=n$. With $n=2m$ this means $\E X=m+ng/2$ and $\E Y=m-ng/2$, so the binomial laws with the same means as $X$ and $Y$ are $\Bin(n,\frac{1+g}2)$ and $\Bin(n,\frac{1-g}2)$, and $k=m$ satisfies $\E Y+1\le m\le\E X$ whenever $g\ge2/n$. Hoeffding's tail comparison~\cite{Hoeffding}, which holds with non-strict inequalities~\cite[Theorem~2.1(1)]{TangTang}, states: for a sum $S$ of $n$ independent Bernoulli variables and an integer $c$, $\Pp(S\le c)$ is at most the binomial value with the same mean when $c\le\E S-1$, and at least it when $c\ge\E S$. Applied with $c=m-1$, for centered pairs with $g\ge2/n$ it therefore gives $D_m\ge b_n(g)$ for arbitrary gaps and every even $n$, and the second step is not needed, since the two binomial laws are already the symmetric binomial pair. For $g<2/n$ no integer $k$ satisfies $\E Y+1\le k\le\E X$, and the argument does not apply.
 
-Christopher D. Long~\cite[Theorem~1]{Long} proved~\eqref{eq:conj}, and its analogue for odd $n$, for every pair with $p\ge q$, without the centering assumption; for even $n\ge4$ and $g>0$ equality holds only for the symmetric binomial pair. His theorem is stated for the maximum of the $D_k$, and its proof is a reduction to stationary points. We give the excess of $d_K(X,Y)$ over $b_n(g)$ for centered pairs in two cases: all gaps equal with $n=2m\ge4$ and every $g$, and $n=4$ with arbitrary gaps. When all gaps equal $g\in(0,1)$, put $a=1-g$, let $R_1,\dots,R_n$ be independent Bernoulli$(r_i)$ variables with $r_i=(1+s_i/a)/2$, let $Z_1,\dots,Z_n$ be independent Bernoulli$(g)$ variables, independent of the $R_i$, and put $W=R_1+\dots+R_n$; we call this the construction of $X$ and $Y$ from $W$. Then $\max(R_i,Z_i)$ has the law of $X_i$, $R_i(1-Z_i)$ has the law of $Y_i$, and $\E W=m$ for every $g$. Because every $Z_i$ has the same parameter, given $W=w$ the two sums have the laws of $w+\Bin(2m-w,g)$ and $\Bin(w,a)$, so $(D_m+D_{m+1})/2=\E\phi(W)$, where $\phi(w)$ is the value of $(D_m+D_{m+1})/2$ for the pair $w+\Bin(2m-w,g)$, $\Bin(w,a)$; the function $\phi$, computed in \cref{sec:equal}, is symmetric about $m$ and increases towards $m$. Hoeffding's tail comparison, applied to $X$ and to $Y$ at one point, is thus replaced by a comparison of $W$ with $\Bin(2m,\frac12)$ on intervals centered at $m$. Hoeffding's interval comparison~\cite[Theorem~5]{Hoeffding} gives $\delta_j=\Pp(|W-m|\le j)-\Pp(|B_0-m|\le j)\ge0$ for $0\le j\le m-1$, where $B_0$ has the law $\Bin(2m,\frac12)$, and with the jumps $A_j=\phi(m-j)-\phi(m-j-1)>0$ of $\phi$, given in~\eqref{eq:jumps},
-\[
-\frac{D_m+D_{m+1}}2-b_{2m}(g)=\sum_{j=0}^{m-1}A_j\delta_j\ \ge0 .
-\]
-Since $\sum_j(2j+1)\delta_j=\operatorname{Var}B_0-\operatorname{Var}W=S_2/(4a^2)$, comparing each $A_j$ with $2j+1$ gives the term in $S_2$ in~\eqref{eq:equal}. 
+Christopher D. Long~\cite[Theorem~1]{Long} proved~\eqref{eq:conj}, and its analogue for odd $n$, for every pair with $p\ge q$, without the centering assumption; for even $n\ge4$ and $g>0$ equality holds only for the symmetric binomial pair. His theorem is stated for the maximum of the $D_k$, and its proof is a reduction to stationary points. We give the excess of $d_K(X,Y)$ over $b_n(g)$ for centered pairs in two cases: all gaps equal with $n=2m\ge4$ and every $g$, and $n=4$ with arbitrary gaps. When all gaps are equal, both sums are built in \cref{sec:equal} from one sum $W$ of independent Bernoulli variables with mean $m$ and from independent Bernoulli$(g)$ variables. The mean of $D_m$ and $D_{m+1}$ is then the expectation of a function of $W$ that is symmetric about $m$ and increases towards $m$, and the comparison of $X$ and $Y$ with binomial laws at one point is replaced by Hoeffding's comparison of $W$ with $\Bin(2m,\frac12)$ on intervals centered at $m$. This gives the excess as a sum of nonnegative terms, \eqref{eq:exact}, and a variance identity gives the term in $S_2$.
 
 For $n=4$ and every $g$, $D_2$ and $D_3$ are explicit polynomials in $(s,d)$, and the conjecture reduces to an inequality between two polynomials, stated in \cref{thm:four}.
 
@@ -124,7 +120,7 @@ We use Hoeffding's interval comparison~\cite[Theorem~5]{Hoeffding}: if $S$ is a 
 We apply it with $n\bar r=m$ an integer and the intervals $[m-j,m+j]$, $0\le j\le m-1$.
 
 \begin{proof}[Proof of \cref{thm:equal}]
-If $g=0$ then $p_i=q_i$ for every $i$ and there is nothing to prove; if $g=1$ then feasibility forces $p_i=1$ and $q_i=0$, so $S_2=0$ and both sides equal $1$. Let $0<g<1$, and let $a$, $r_i$, $R_i$, $Z_i$ and $W$ be as in \cref{sec:intro}. Feasibility $|s_i|\le a$ gives $r_i\in[0,1]$, centering gives $\sum_i r_i=m$, and $q_i=ar_i$, $p_i=g+ar_i$.
+If $g=0$ then $p_i=q_i$ for every $i$ and there is nothing to prove; if $g=1$ then feasibility forces $p_i=1$ and $q_i=0$, so $S_2=0$ and both sides equal $1$. Let $0<g<1$ and put $a=1-g$ and $r_i=(1+s_i/a)/2$. Let $R_1,\dots,R_n$ be independent Bernoulli$(r_i)$ variables, let $Z_1,\dots,Z_n$ be independent Bernoulli$(g)$ variables, independent of the $R_i$, and put $W=R_1+\dots+R_n$. Feasibility $|s_i|\le a$ gives $r_i\in[0,1]$, centering gives $\sum_i r_i=m$, and $q_i=ar_i$, $p_i=g+ar_i$.
 
 Put
 \[
@@ -136,7 +132,7 @@ Then $\widetilde X_i$ is Bernoulli$(p_i)$ and $\widetilde Y_i$ is Bernoulli$(q_i
 \Bigl(\sum_i\widetilde Y_i\Bigm| W=w\Bigr)\overset d=\Bin(w,a).
 \end{equation}
 
-Let $h(k)=-1,0,1$ according as $k<m$, $k=m$, $k>m$, so that $h(k)=\mathbf 1_{\{k\ge m\}}+\mathbf 1_{\{k\ge m+1\}}-1$ with $\mathbf 1$ denoting an indicator. In terms of $h$, the function $\phi$ of \cref{sec:intro} is
+Let $h(k)=-1,0,1$ according as $k<m$, $k=m$, $k>m$, so that $h(k)=\mathbf 1_{\{k\ge m\}}+\mathbf 1_{\{k\ge m+1\}}-1$ with $\mathbf 1$ denoting an indicator. Define
 \[
 \phi(w)=\tfrac12\Bigl(\E h\bigl(w+\Bin(2m-w,g)\bigr)-\E h\bigl(\Bin(w,a)\bigr)\Bigr),\qquad 0\le w\le 2m .
 \]
@@ -150,7 +146,7 @@ We compute $\phi$ on $[0,m]$. If $w=m-j$ with $1\le j\le m$, then $\Bin(m-j,a)<m
 \[
 \phi(m-j)=\Pp(B>j)+\tfrac12\Pp(B=j).
 \]
-At the center, $\phi(m)=1-a^m$. Let $A_j=\phi(m-j)-\phi(m-j-1)$, $0\le j\le m-1$, be the jumps of \cref{sec:intro}. For $j\ge1$, let $B'=B+\xi$ with $\xi$ an independent Bernoulli$(g)$ variable, so that $\phi(m-j-1)=\Pp(B'>j+1)+\frac12\Pp(B'=j+1)$. Expanding $B'$ in terms of $B$ gives $A_j=\frac a2\bigl(\Pp(B=j)+\Pp(B=j+1)\bigr)$, and direct substitution at $j=0$ gives $A_0$:
+At the center, $\phi(m)=1-a^m$. Let $A_j=\phi(m-j)-\phi(m-j-1)$, $0\le j\le m-1$, be the jumps of $\phi$. For $j\ge1$, let $B'=B+\xi$ with $\xi$ an independent Bernoulli$(g)$ variable, so that $\phi(m-j-1)=\Pp(B'>j+1)+\frac12\Pp(B'=j+1)$. Expanding $B'$ in terms of $B$ gives $A_j=\frac a2\bigl(\Pp(B=j)+\Pp(B=j+1)\bigr)$, and direct substitution at $j=0$ gives $A_0$:
 \begin{equation}\label{eq:jumps}
 A_0=\frac{m-1}2\,g\,a^m,\qquad
 A_j=\frac12\binom{m+j}{j}g^ja^m\Bigl(a+\frac{m}{j+1}\,g\Bigr)\quad(1\le j\le m-1).
@@ -160,7 +156,7 @@ All $A_j$ are positive when $m\ge2$. Telescoping and symmetry give, for $0\le w\
 \phi(w)=\phi(0)+\sum_{j=0}^{m-1}A_j\,\mathbf 1_{\{|w-m|\le j\}} .
 \end{equation}
 
-Let $B_0$ and $\delta_j$ be as in \cref{sec:intro}. By~\eqref{eq:hoeffding} with $\ell_1=m-j$ and $\ell_2=m+j$, every $\delta_j$ is nonnegative. When every $r_i$ equals $\frac12$, the construction produces the symmetric binomial pair, $W$ has the law of $B_0$, and~\eqref{eq:average} equals $(D_m+D_{m+1})/2$ for that pair. By the symmetry $\Bin(n,\frac{1-g}2)\overset d=n-\Bin(n,\frac{1+g}2)$ this is $b_{2m}(g)$. Taking expectations in~\eqref{eq:expansion} under $W$ and under $B_0$ gives
+Let $B_0$ have the law $\Bin(2m,\frac12)$, and put $\delta_j=\Pp(|W-m|\le j)-\Pp(|B_0-m|\le j)$ for $0\le j\le m-1$. By~\eqref{eq:hoeffding} with $\ell_1=m-j$ and $\ell_2=m+j$, every $\delta_j$ is nonnegative. When every $r_i$ equals $\frac12$, $\sum_i\widetilde X_i$ and $\sum_i\widetilde Y_i$ form the symmetric binomial pair, $W$ has the law of $B_0$, and~\eqref{eq:average} equals $(D_m+D_{m+1})/2$ for that pair. By the symmetry $\Bin(n,\frac{1-g}2)\overset d=n-\Bin(n,\frac{1+g}2)$ this is $b_{2m}(g)$. Taking expectations in~\eqref{eq:expansion} under $W$ and under $B_0$ gives
 \begin{equation}\label{eq:exact}
 \frac{D_m+D_{m+1}}2-b_{2m}(g)=\sum_{j=0}^{m-1}A_j\delta_j\ \ge0 .
 \end{equation}
@@ -312,20 +308,22 @@ $d_i,s_i$ & $p_i-q_i$ and $p_i+q_i-1$ & \cref{sec:intro}\\
 $\Delta,g,S_2$ & $\sum_id_i$, mean gap $\Delta/n$, $\sum_is_i^2$ & \cref{sec:intro}\\
 $\Pp,\E$ & probability and expectation & \cref{sec:intro}\\
 $S$, $c$ & a sum of independent Bernoulli variables and an integer threshold in Hoeffding's tail comparison & \cref{sec:intro}\\
-$k$, $D_k$, $d_K$ & an integer; $\Pp(X\ge k)-\Pp(Y\ge k)$; Kolmogorov distance & \cref{sec:intro}\\
+$D_k$, $d_K$ & $\Pp(X\ge k)-\Pp(Y\ge k)$; Kolmogorov distance & \cref{sec:intro}\\
 $\Bin(n,p)$, $b_n(g)$ & binomial variable; Kolmogorov distance of the symmetric binomial pair & \cref{sec:intro}\\
 $Q,L$ & the two polynomials of the case $n=4$ & \cref{sec:intro}\\
 $\ell_1,\ell_2$, $\bar r$ & integer endpoints in Hoeffding's interval comparison; mean of the parameters of $S$ in \eqref{eq:hoeffding} & \cref{sec:equal}\\
-$w$ & a value of $W$ & \cref{sec:intro}\\
-$a$, $r_i$ & $1-g$; $(1+s_i/a)/2$ & \cref{sec:intro}\\
-$R_i,Z_i,W$ & the Bernoulli$(r_i)$ and Bernoulli$(g)$ variables of the construction, $\sum_iR_i$ & \cref{sec:intro}\\
+$w$ & a value of $W$ & proof of \cref{thm:equal}\\
+$a$, $r_i$ & $1-g$; $(1+s_i/a)/2$ & proof of \cref{thm:equal}\\
+$R_i,Z_i,W$ & the Bernoulli$(r_i)$ and Bernoulli$(g)$ variables from which $X$ and $Y$ are built, $\sum_iR_i$ & proof of \cref{thm:equal}\\
 $\widetilde X_i,\widetilde Y_i$ & copies of $X_i,Y_i$ built from $R_i,Z_i$ & proof of \cref{thm:equal}\\
 $\mathbf 1$ & indicator & proof of \cref{thm:equal}\\
-$h$ & sign of $k-m$ & \cref{sec:equal}\\
-$\phi$ & the conditional value of $(D_m+D_{m+1})/2$ given $W=w$ & \cref{sec:intro}\\
+$h$ & sign of $k-m$ & proof of \cref{thm:equal}\\
+$\overset d=$ & equality in law & proof of \cref{thm:equal}\\
+$\nu$ & an integer in $\{0,\dots,m\}$ & proof of \cref{thm:equal}\\
+$\phi$ & the conditional value of $(D_m+D_{m+1})/2$ given $W=w$ & proof of \cref{thm:equal}\\
 $B,B',\xi$ & $\Bin(m+j,g)$, $B+\xi$, a Bernoulli$(g)$ variable & proof of \cref{thm:equal}\\
-$A_j$ & jumps of $\phi$ & \cref{sec:intro}\\
-$B_0$, $\delta_j$ & $\Bin(2m,\frac12)$; $\Pp(|W-m|\le j)-\Pp(|B_0-m|\le j)$ & \cref{sec:intro}\\
+$A_j$ & jumps of $\phi$ & proof of \cref{thm:equal}\\
+$B_0$, $\delta_j$ & $\Bin(2m,\frac12)$; $\Pp(|W-m|\le j)-\Pp(|B_0-m|\le j)$ & proof of \cref{thm:equal}\\
 $c^*_{2m}(g)$ & coefficient of $S_2$ obtained from~\eqref{eq:variance} & \eqref{eq:cstar}\\
 $y_i$, $v_i,U,F$ & variables of \cref{lem:three}, later coordinates of $s$; quantities of \cref{lem:three} & \cref{lem:three}\\
 $z$, $M$, $e_k$ & a sign vector; $1$, $0$ or $-1$ by the number of positive coordinates of $z$; elementary symmetric polynomials & proof of \cref{thm:four}\\
