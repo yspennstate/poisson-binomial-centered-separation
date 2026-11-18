@@ -14,7 +14,7 @@ When the gaps are not all zero, equality holds in both cases only for the symmet
 - `main.tex`, `main.pdf`: the paper.
 - `CREDITS.md`: which statements are known and which are new, and whose work they rest on.
 - `code/certificate_checks.py`: verifies in exact rational arithmetic the polynomial identities of Section 3 (the four-summand averages and differences, the coordinates of Q, the affine form of L, the regrouping, the gap identity and the vertex expansion in Lemma 3.1). Output: `code/certificate_checks.json`.
-- `code/general_uniform.py`: checks the identities of Section 2 (the average, the jumps, the exact excess, the variance identity and the bound of Theorem 1.1) by exact convolution on 1,335 rational parameter vectors with n <= 20. Output: `code/uniform_checks.json`.
+- `code/general_uniform.py`: checks the identities of Section 2 (the average, the jumps, the exact excess, the variance identity) by exact convolution on 1,335 rational parameter vectors with n <= 20, and the bound of Theorem 1.1 on the 1,280 of them with n >= 4. Output: `code/uniform_checks.json`.
 - `code/print_formulas.py`: prints the low-dimensional coefficients displayed in Section 2 as exact rationals.
 - `code/verify_paper_identities.py`: a second check of the same identities written in the notation of the paper, with SymPy, together with the equal-gap formulas for m = 2, ..., 6 in exact rationals.
 

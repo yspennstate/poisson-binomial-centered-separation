@@ -69,7 +69,7 @@ In a question on MathOverflow~\cite{Kontorovich}, Aryeh Kontorovich conjectured 
 \begin{equation}\label{eq:conj}
 d_K(X,Y)\ge b_n(g)\qquad\text{for every even } n.
 \end{equation}
-The right side is the Kolmogorov distance of the symmetric binomial pair $\Bin(n,\frac{1+g}2)$, $\Bin(n,\frac{1-g}2)$, which has the same mean gap; it is attained at $k=n/2$. Since $p_i=(1+s_i+d_i)/2$ and $q_i=(1+s_i-d_i)/2$, both lie in $[0,1]$ precisely when $|s_i|+d_i\le1$; we then call $(s,d)$, and the pair, feasible.
+The right side is the Kolmogorov distance of the symmetric binomial pair $\Bin(n,\frac{1+g}2)$, $\Bin(n,\frac{1-g}2)$, which has the same mean gap; it is attained at $k=n/2$. Since $p_i=(1+s_i+d_i)/2$ and $q_i=(1+s_i-d_i)/2$, both lie in $[0,1]$ precisely when $|s_i|+d_i\le1$; we then call $(s,d)$, and the pair $(X,Y)$, feasible.
 
 Two answers on MathOverflow contain partial results. Will Sawin~\cite{Sawin} shows by an exchange argument that if an integer $k$ satisfies $\E Y+1<k<\E X$, then $\Pp(X\ge k)$ is at least, and $\Pp(Y\ge k)$ at most, the corresponding tail of the binomial law with the same mean; this is a case of Hoeffding's tail comparison~\cite{Hoeffding}. So $D_k$ is bounded below by a difference of two binomial tails. Such a $k$ exists when $g>2/n$; when $g\le2/n$ the interval $(\E Y+1,\E X)$ may contain no integer. The argument also needs a second step that is not proved in~\cite{Sawin}: among pairs of binomial laws whose means differ by $ng$, the difference of tails at such a $k$ is smallest for the symmetric binomial pair.
 
@@ -77,9 +77,9 @@ Thomas Steinke~\cite{Steinke} considers the total variation distance between the
 
 Leon Jay Gleser~\cite{Gleser} sharpens Hoeffding's tail comparison to Schur-convexity statements for the distribution function, but these compare one sum with the binomial law of the same mean and do not supply the second step above; Wenpin Tang and Fengmin Tang~\cite{TangTang} survey these and other properties of Poisson binomial laws. In later papers Kontorovich~\cite{KontorovichHom,KontorovichTV} proves that the total variation distance between two products of Bernoulli laws, and more generally of arbitrary laws, is at least a universal constant times the distance between the products in which every factor is replaced by the average of its family; for Bernoulli products the best such constant is at most $8/9$~\cite[remark after Theorem~1.5]{KontorovichTV}. Since $d_K(X,Y)$ is at most the total variation distance, these lower bounds do not bound $d_K(X,Y)$ from below.
 
-We call the pair centered when $\sum_is_i=0$, that is, $\E X+\E Y=n$. With $n=2m$ this means $\E X=m+ng/2$ and $\E Y=m-ng/2$, so the binomial laws with the same means as $X$ and $Y$ are $\Bin(n,\frac{1+g}2)$ and $\Bin(n,\frac{1-g}2)$, and $k=m$ satisfies $\E Y+1\le m\le\E X$ whenever $g\ge2/n$. Hoeffding's tail comparison holds with non-strict inequalities~\cite[Theorem~2.1(1)]{TangTang}: for a sum $S$ of $n$ independent Bernoulli variables, $\Pp(S\le c)$ is at most the binomial value with the same mean when $c\le\E S-1$, and at least it when $c\ge\E S$. Applied with $c=m-1$, for centered pairs with $g\ge2/n$ it therefore gives $D_m\ge b_n(g)$ for arbitrary gaps and every even $n$, and the second step is not needed, since the two binomial laws are already the symmetric pair. For $g<2/n$ no integer $k$ satisfies $\E Y+1\le k\le\E X$, and the argument does not apply.
+We call the pair centered when $\sum_is_i=0$, that is, $\E X+\E Y=n$. With $n=2m$ this means $\E X=m+ng/2$ and $\E Y=m-ng/2$, so the binomial laws with the same means as $X$ and $Y$ are $\Bin(n,\frac{1+g}2)$ and $\Bin(n,\frac{1-g}2)$, and $k=m$ satisfies $\E Y+1\le m\le\E X$ whenever $g\ge2/n$. Hoeffding's tail comparison holds with non-strict inequalities~\cite[Theorem~2.1(1)]{TangTang}: for a sum $S$ of $n$ independent Bernoulli variables, $\Pp(S\le c)$ is at most the binomial value with the same mean when $c\le\E S-1$, and at least it when $c\ge\E S$. Applied with $c=m-1$, for centered pairs with $g\ge2/n$ it therefore gives $D_m\ge b_n(g)$ for arbitrary gaps and every even $n$, and the second step is not needed, since the two binomial laws are already the symmetric binomial pair. For $g<2/n$ no integer $k$ satisfies $\E Y+1\le k\le\E X$, and the argument does not apply.
 
-We prove~\eqref{eq:conj} for centered pairs in two cases that include this range: all gaps equal with $n=2m\ge4$ and every $g$, and $n=4$ with arbitrary gaps. When all gaps equal $g\in(0,1)$, put $a=1-g$, let $R_1,\dots,R_n$ be independent Bernoulli$(r_i)$ variables with $r_i=(1+s_i/a)/2$, let $Z_1,\dots,Z_n$ be independent Bernoulli$(g)$ variables, independent of the $R_i$, and put $W=R_1+\dots+R_n$. Then $\max(R_i,Z_i)$ has the law of $X_i$, $R_i(1-Z_i)$ has the law of $Y_i$, and $\E W=m$ for every $g$. Because every $Z_i$ has the same parameter, given $W=w$ the two sums have the laws of $w+\Bin(2m-w,g)$ and $\Bin(w,a)$, so $(D_m+D_{m+1})/2=\E\phi(W)$, where $\phi(w)$ is the value of $(D_m+D_{m+1})/2$ for the pair $w+\Bin(2m-w,g)$, $\Bin(w,a)$; the function $\phi$, computed in \cref{sec:equal}, is symmetric about $m$ and increases towards $m$. Two one-sided comparisons at a point between two different means are thus replaced by one two-sided comparison of a single sum at its own integer mean. Hoeffding's interval comparison~\cite[Theorem~5]{Hoeffding} gives $\delta_j=\Pp(|W-m|\le j)-\Pp(|B_0-m|\le j)\ge0$ for $0\le j\le m-1$, where $B_0$ has the law $\Bin(2m,\frac12)$, and with the jumps $A_j=\phi(m-j)-\phi(m-j-1)>0$ of $\phi$, given in~\eqref{eq:jumps},
+We prove~\eqref{eq:conj} for centered pairs in two cases that include this range: all gaps equal with $n=2m\ge4$ and every $g$, and $n=4$ with arbitrary gaps. When all gaps equal $g\in(0,1)$, put $a=1-g$, let $R_1,\dots,R_n$ be independent Bernoulli$(r_i)$ variables with $r_i=(1+s_i/a)/2$, let $Z_1,\dots,Z_n$ be independent Bernoulli$(g)$ variables, independent of the $R_i$, and put $W=R_1+\dots+R_n$; we call this the construction of $X$ and $Y$ from $W$. Then $\max(R_i,Z_i)$ has the law of $X_i$, $R_i(1-Z_i)$ has the law of $Y_i$, and $\E W=m$ for every $g$. Because every $Z_i$ has the same parameter, given $W=w$ the two sums have the laws of $w+\Bin(2m-w,g)$ and $\Bin(w,a)$, so $(D_m+D_{m+1})/2=\E\phi(W)$, where $\phi(w)$ is the value of $(D_m+D_{m+1})/2$ for the pair $w+\Bin(2m-w,g)$, $\Bin(w,a)$; the function $\phi$, computed in \cref{sec:equal}, is symmetric about $m$ and increases towards $m$. Two one-sided comparisons at a point between two different means are thus replaced by one two-sided comparison of a single sum at its own integer mean. Hoeffding's interval comparison~\cite[Theorem~5]{Hoeffding} gives $\delta_j=\Pp(|W-m|\le j)-\Pp(|B_0-m|\le j)\ge0$ for $0\le j\le m-1$, where $B_0$ has the law $\Bin(2m,\frac12)$, and with the jumps $A_j=\phi(m-j)-\phi(m-j-1)>0$ of $\phi$, given in~\eqref{eq:jumps},
 \[
 \frac{D_m+D_{m+1}}2-b_{2m}(g)=\sum_{j=0}^{m-1}A_j\delta_j\ \ge0 .
 \]
@@ -93,7 +93,7 @@ Let $n=2m\ge4$, suppose $d_i=g$ for every $i$, and suppose $\sum_i s_i=0$. Then
 In particular $d_K(X,Y)\ge b_{2m}(g)$, and for $g>0$ equality $d_K(X,Y)=b_{2m}(g)$ holds only when every $s_i$ vanishes.
 \end{theorem}
 
-The difference $(D_m+D_{m+1})/2-b_{2m}(g)$ has an exact expression as a sum of nonnegative terms, given in~\eqref{eq:exact}, and~\eqref{eq:cstar} gives a coefficient of $S_2$ at least as large as the one in~\eqref{eq:equal}. For $n=2$ the average $(D_1+D_2)/2$ equals $b_2(g)=g$ for every pair (\cref{rem:n2}), so no positive multiple of $S_2$ can be added there.
+The excess of $(D_m+D_{m+1})/2$ over $b_{2m}(g)$ has an exact expression as a sum of nonnegative terms, given in~\eqref{eq:exact}, and~\eqref{eq:cstar} gives a coefficient of $S_2$ at least as large as the one in~\eqref{eq:equal}. For $n=2$ the average $(D_1+D_2)/2$ equals $b_2(g)=g$ for every pair (\cref{rem:n2}), so no positive multiple of $S_2$ can be added there.
 
 \begin{theorem}[four summands]\label{thm:four}
 Let $n=4$ and $\sum_i s_i=0$, with arbitrary gaps $d_i\ge0$. Put
@@ -133,7 +133,7 @@ Then $\widetilde X_i$ is Bernoulli$(p_i)$ and $\widetilde Y_i$ is Bernoulli$(q_i
 \Bigl(\sum_i\widetilde Y_i\Bigm| W=w\Bigr)\overset d=\Bin(w,a).
 \end{equation}
 
-Let $h(k)=-1,0,1$ according as $k<m$, $k=m$, $k>m$, so that $h(k)=\mathbf 1_{\{k\ge m\}}+\mathbf 1_{\{k\ge m+1\}}-1$ with $\mathbf 1$ denoting an indicator, and put
+Let $h(k)=-1,0,1$ according as $k<m$, $k=m$, $k>m$, so that $h(k)=\mathbf 1_{\{k\ge m\}}+\mathbf 1_{\{k\ge m+1\}}-1$ with $\mathbf 1$ denoting an indicator. In terms of $h$, the function $\phi$ of \cref{sec:intro} is
 \[
 \phi(w)=\tfrac12\Bigl(\E h\bigl(w+\Bin(2m-w,g)\bigr)-\E h\bigl(\Bin(w,a)\bigr)\Bigr),\qquad 0\le w\le 2m .
 \]
@@ -147,7 +147,7 @@ We compute $\phi$ on $[0,m]$. If $w=m-j$ with $1\le j\le m$, then $\Bin(m-j,a)<m
 \[
 \phi(m-j)=\Pp(B>j)+\tfrac12\Pp(B=j).
 \]
-At the center, $\phi(m)=1-a^m$. Put $A_j=\phi(m-j)-\phi(m-j-1)$ for $0\le j\le m-1$. For $j\ge1$, let $B'=B+\xi$ with $\xi$ an independent Bernoulli$(g)$ variable, so that $\phi(m-j-1)=\Pp(B'>j+1)+\frac12\Pp(B'=j+1)$. Expanding $B'$ in terms of $B$ gives $A_j=\frac a2\bigl(\Pp(B=j)+\Pp(B=j+1)\bigr)$, and direct substitution at $j=0$ gives $A_0$:
+At the center, $\phi(m)=1-a^m$. Let $A_j=\phi(m-j)-\phi(m-j-1)$, $0\le j\le m-1$, be the jumps of \cref{sec:intro}. For $j\ge1$, let $B'=B+\xi$ with $\xi$ an independent Bernoulli$(g)$ variable, so that $\phi(m-j-1)=\Pp(B'>j+1)+\frac12\Pp(B'=j+1)$. Expanding $B'$ in terms of $B$ gives $A_j=\frac a2\bigl(\Pp(B=j)+\Pp(B=j+1)\bigr)$, and direct substitution at $j=0$ gives $A_0$:
 \begin{equation}\label{eq:jumps}
 A_0=\frac{m-1}2\,g\,a^m,\qquad
 A_j=\frac12\binom{m+j}{j}g^ja^m\Bigl(a+\frac{m}{j+1}\,g\Bigr)\quad(1\le j\le m-1).
@@ -180,7 +180,7 @@ Since $d_K(X,Y)\ge(D_m+D_{m+1})/2$, we get $d_K(X,Y)\ge b_n(g)$, with equality f
 \end{proof}
 
 \begin{remark}\label{rem:n2}
-For $n=2$ and every pair, $D_1+D_2=\E X-\E Y=2g$, while both tail differences of the binomial pair equal $\bigl((1+g)^2-(1-g)^2\bigr)/4=g$, so $b_2(g)=g$. Hence $d_K(X,Y)\ge(D_1+D_2)/2=b_2(g)$, which proves~\eqref{eq:conj} for $n=2$ without centering and with arbitrary gaps, and the average leaves no room for a positive multiple of $S_2$. In the construction above this is the case $m=1$, where the jump $A_0$ vanishes and $\phi$ is constant.
+For $n=2$ and every pair, $D_1+D_2=\E X-\E Y=2g$, while both tail differences of the symmetric binomial pair equal $\bigl((1+g)^2-(1-g)^2\bigr)/4=g$, so $b_2(g)=g$. Hence $d_K(X,Y)\ge(D_1+D_2)/2=b_2(g)$, which proves~\eqref{eq:conj} for $n=2$ without centering and with arbitrary gaps, and the average leaves no room for a positive multiple of $S_2$. In the construction above this is the case $m=1$, where the jump $A_0$ vanishes and $\phi$ is constant.
 \end{remark}
 
 \begin{remark}\label{rem:b2m}
@@ -288,7 +288,7 @@ This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI),
 The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital. These entities are listed under Acknowledgments and funding above.
 
 \section*{Code and data availability}
-The \LaTeX\ source and the programs are available at \url{https://github.com/yspennstate/poisson-binomial-centered-separation}. They verify the identities~\eqref{eq:avg4},~\eqref{eq:diff4},~\eqref{eq:Q},~\eqref{eq:affine},~\eqref{eq:regroup},~\eqref{eq:gap} and the expansion in the proof of \cref{lem:three} in exact rational arithmetic, and evaluate~\eqref{eq:average},~\eqref{eq:jumps},~\eqref{eq:exact},~\eqref{eq:variance} and~\eqref{eq:equal} by exact convolution for $1{,}335$ rational parameter vectors with $n\le20$.
+The \LaTeX\ source and the programs are available at \url{https://github.com/yspennstate/poisson-binomial-centered-separation}. They verify the identities~\eqref{eq:avg4},~\eqref{eq:diff4},~\eqref{eq:Q},~\eqref{eq:affine},~\eqref{eq:regroup},~\eqref{eq:gap} and the expansion in the proof of \cref{lem:three} in exact rational arithmetic, and evaluate~\eqref{eq:average},~\eqref{eq:jumps},~\eqref{eq:exact} and~\eqref{eq:variance} by exact convolution for $1{,}335$ rational parameter vectors with $n\le20$, and~\eqref{eq:equal} for the $1{,}280$ of them with $n\ge4$.
 
 \section*{Declaration of generative AI and AI-assisted technologies}
 Codex (OpenAI) found the construction through the sum $W$ and the four-summand argument and wrote the verification programs; a second Codex run checked every claim with its own code. Claude (Anthropic) checked the proofs and wrote the text. The work rests on Kontorovich's question~\cite{Kontorovich}, Hoeffding's interval comparison~\cite{Hoeffding} and the partial answers of Steinke and Sawin~\cite{Steinke,Sawin}; for centered pairs with $g\ge2/n$ the inequality $d_K(X,Y)\ge b_n(g)$ follows from Hoeffding's tail comparison as in Sawin's answer, and the case $g<2/n$ of \cref{thm:equal,thm:four}, the terms in $S_2$ and $|L|-Q$, the identities~\eqref{eq:exact} and~\eqref{eq:four}, the constant $\frac83$ and the equality cases are new. The author selected the problem. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
@@ -309,15 +309,15 @@ $\Pp,\E$ & probability and expectation & \cref{sec:intro}\\
 $k$, $D_k$, $d_K$ & an integer; $\Pp(X\ge k)-\Pp(Y\ge k)$; Kolmogorov distance & \cref{sec:intro}\\
 $\Bin(n,p)$, $b_n(g)$ & binomial variable; Kolmogorov distance of the symmetric binomial pair & \cref{sec:intro}\\
 $Q,L$ & the two polynomials of the case $n=4$ & \cref{sec:intro}\\
-$\ell_1,\ell_2$, $\bar r$ & integer endpoints in Hoeffding's interval comparison; mean parameter of $W$ & \cref{sec:equal}\\
+$\ell_1,\ell_2$, $\bar r$ & integer endpoints in Hoeffding's interval comparison; mean of the parameters of $S$ in \eqref{eq:hoeffding} & \cref{sec:equal}\\
 $w$ & a value of $W$ & \cref{sec:intro}\\
 $a$, $r_i$ & $1-g$; $(1+s_i/a)/2$ & \cref{sec:intro}\\
 $R_i,Z_i,W$ & the Bernoulli$(r_i)$ and Bernoulli$(g)$ variables of the construction, $\sum_iR_i$ & \cref{sec:intro}\\
 $\widetilde X_i,\widetilde Y_i$ & copies of $X_i,Y_i$ built from $R_i,Z_i$ & proof of \cref{thm:equal}\\
 $\mathbf 1$ & indicator & proof of \cref{thm:equal}\\
-$h$, $\phi$ & sign of $k-m$; the conditional value of $(D_m+D_{m+1})/2$ given $W=w$ & proof of \cref{thm:equal}\\
+$h$, $\phi$ & sign of $k-m$; the conditional value of $(D_m+D_{m+1})/2$ given $W=w$ & \cref{sec:intro}\\
 $B,B',\xi$ & $\Bin(m+j,g)$, $B+\xi$, a Bernoulli$(g)$ variable & proof of \cref{thm:equal}\\
-$A_j$ & jumps of $\phi$ & proof of \cref{thm:equal}\\
+$A_j$ & jumps of $\phi$ & \cref{sec:intro}\\
 $B_0$, $\delta_j$ & $\Bin(2m,\frac12)$; $\Pp(|W-m|\le j)-\Pp(|B_0-m|\le j)$ & \cref{sec:intro}\\
 $c^*_{2m}(g)$ & coefficient of $S_2$ obtained from~\eqref{eq:variance} & \eqref{eq:cstar}\\
 $y_i$, $v_i,U,F$ & variables of \cref{lem:three}, later coordinates of $s$; quantities of \cref{lem:three} & \cref{lem:three}\\
