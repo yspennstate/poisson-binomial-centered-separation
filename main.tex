@@ -69,7 +69,7 @@ In a question on MathOverflow~\cite{Kontorovich}, Aryeh Kontorovich conjectured 
 \begin{equation}\label{eq:conj}
 d_K(X,Y)\ge b_n(g)\qquad\text{for every even } n.
 \end{equation}
-The right side is the Kolmogorov distance of the symmetric binomial pair $\Bin(n,\frac{1+g}2)$, $\Bin(n,\frac{1-g}2)$, which has the same mean gap; it is attained at $k=n/2$. Since $p_i=(1+s_i+d_i)/2$ and $q_i=(1+s_i-d_i)/2$, both lie in $[0,1]$ precisely when $|s_i|+d_i\le1$; we then call $(s,d)$ feasible.
+The right side is the Kolmogorov distance of the symmetric binomial pair $\Bin(n,\frac{1+g}2)$, $\Bin(n,\frac{1-g}2)$, which has the same mean gap; it is attained at $k=n/2$. Since $p_i=(1+s_i+d_i)/2$ and $q_i=(1+s_i-d_i)/2$, both lie in $[0,1]$ precisely when $|s_i|+d_i\le1$; we then call $(s,d)$, and the pair, feasible.
 
 Two answers on MathOverflow contain partial results. Will Sawin~\cite{Sawin} shows by an exchange argument that if an integer $k$ satisfies $\E Y+1<k<\E X$, then $\Pp(X\ge k)$ is at least, and $\Pp(Y\ge k)$ at most, the corresponding tail of the binomial law with the same mean; this is a case of Hoeffding's tail comparison~\cite{Hoeffding}. So $D_k$ is bounded below by a difference of two binomial tails. Such a $k$ exists when $g>2/n$; when $g\le2/n$ the interval $(\E Y+1,\E X)$ may contain no integer. The argument also needs a second step that is not proved in~\cite{Sawin}: among pairs of binomial laws whose means differ by $ng$, the difference of tails at such a $k$ is smallest for the symmetric binomial pair.
 
@@ -90,10 +90,10 @@ Let $n=2m\ge4$, suppose $d_i=g$ for every $i$, and suppose $\sum_i s_i=0$. Then
 \begin{equation}\label{eq:equal}
 \frac{D_m+D_{m+1}}2\ge b_{2m}(g)+\frac{m+1}{24}\,g^{m-1}(1-g)^{m-2}S_2 .
 \end{equation}
-In particular $d_K(X,Y)\ge b_n(g)$, and for $g>0$ equality $d_K(X,Y)=b_n(g)$ holds only when every $s_i$ vanishes.
+In particular $d_K(X,Y)\ge b_{2m}(g)$, and for $g>0$ equality $d_K(X,Y)=b_{2m}(g)$ holds only when every $s_i$ vanishes.
 \end{theorem}
 
-The difference $(D_m+D_{m+1})/2-b_{2m}(g)$ has an exact expression as a sum of nonnegative terms, given in~\eqref{eq:exact}, and~\eqref{eq:cstar} gives a coefficient of $S_2$ at least as large as the one in~\eqref{eq:equal}. For $n=2$ the average $(D_1+D_2)/2$ equals $b_2(g)=g$ for every centered pair with equal gaps (\cref{rem:n2}), so no positive multiple of $S_2$ can be added there.
+The difference $(D_m+D_{m+1})/2-b_{2m}(g)$ has an exact expression as a sum of nonnegative terms, given in~\eqref{eq:exact}, and~\eqref{eq:cstar} gives a coefficient of $S_2$ at least as large as the one in~\eqref{eq:equal}. For $n=2$ the average $(D_1+D_2)/2$ equals $b_2(g)=g$ for every pair (\cref{rem:n2}), so no positive multiple of $S_2$ can be added there.
 
 \begin{theorem}[four summands]\label{thm:four}
 Let $n=4$ and $\sum_i s_i=0$, with arbitrary gaps $d_i\ge0$. Put
@@ -108,9 +108,9 @@ If $(s,d)$ is feasible, then $Q\le|L|$, and $|L|\ge\frac83Q$ when $Q>0$; the con
 For $\Delta>0$, equality $d_K(X,Y)=b_4(g)$ holds only for the symmetric binomial pair.
 \end{theorem}
 
-For $n=4$, $(D_2+D_3)/2$ and $D_2-D_3$ are explicit polynomials in $(s,d)$, given in~\eqref{eq:avg4} and~\eqref{eq:diff4}, and $\max(D_2,D_3)-b_4(g)$ is the expression~\eqref{eq:four}. The inequality $Q\le|L|$ needs proof only when $Q>0$. In that case some $s_i^2$ exceeds $S_2/2$, and after the reflection $s\mapsto-s$ the inequality follows from an inequality in three variables (\cref{lem:three}).
+The inequality $Q\le|L|$ needs proof only when $Q>0$. In that case some $s_i^2$ exceeds $S_2/2$, and after the reflection $s\mapsto-s$ the inequality follows from \cref{lem:three}.
 
-The general conjecture, without the centering assumption, remains open, as does the centered case with unequal gaps for $n\ge6$ and $g<2/n$.
+For $n\ge4$ the conjecture without the centering assumption remains open, as does the centered case with unequal gaps for $n\ge6$ and $g<2/n$.
 
 \section{Equal gaps}\label{sec:equal}
 
@@ -180,7 +180,7 @@ Since $d_K(X,Y)\ge(D_m+D_{m+1})/2$, we get $d_K(X,Y)\ge b_n(g)$, with equality f
 \end{proof}
 
 \begin{remark}\label{rem:n2}
-For $m=1$ the jump $A_0$ vanishes, so $\phi$ is constant, equal to $\phi(1)=1-a=g$. Thus $(D_1+D_2)/2=g=b_2(g)$ for every centered pair with two equal gaps, which proves~\eqref{eq:conj} in that case but leaves no room for a positive multiple of $S_2$.
+For $n=2$ and every pair, $D_1+D_2=\E X-\E Y=2g$, while both tail differences of the binomial pair equal $\bigl((1+g)^2-(1-g)^2\bigr)/4=g$, so $b_2(g)=g$. Hence $d_K(X,Y)\ge(D_1+D_2)/2=b_2(g)$, which proves~\eqref{eq:conj} for $n=2$ without centering and with arbitrary gaps, and the average leaves no room for a positive multiple of $S_2$. In the construction above this is the case $m=1$, where the jump $A_0$ vanishes and $\phi$ is constant.
 \end{remark}
 
 \begin{remark}\label{rem:b2m}
@@ -235,8 +235,10 @@ Hence $t>\sigma\ge0$, and since $\kappa\le\frac13$, $Q\le x^2(t-\sigma)/3$. Feas
 
 As a function of $t$ with the other variables fixed, $L/x$ is affine; expanding $L$ gives
 \begin{equation}\label{eq:affine}
-\frac Lx=tC+G,\qquad C=1-3x^2y_1y_2y_3-3\sum_iy_i\prod_{j\ne i}u_j,\qquad
-G=\sum_iu_i\Bigl(3x^2\prod_{j\ne i}y_j-y_i\Bigr)+3u_1u_2u_3 .
+\begin{aligned}
+\frac Lx&=tC+G,\qquad C=1-3x^2y_1y_2y_3-3\sum_iy_i\prod_{j\ne i}u_j,\\
+G&=\sum_iu_i\Bigl(3x^2\prod_{j\ne i}y_j-y_i\Bigr)+3u_1u_2u_3 .
+\end{aligned}
 \end{equation}
 Because at most one $y_i$ is negative, $y_1y_2y_3\le\frac1{27}$, either by its sign or by the inequality of arithmetic and geometric means. Because each $y_i\le1$, $\sum_iy_i\prod_{j\ne i}u_j\le\sum_{i<j}u_iu_j\le\sigma^2/3$. With $\sigma<1-x$,
 \begin{equation}\label{eq:slope}
@@ -304,7 +306,7 @@ $n$, $m$ & number of summands; $n=2m$ when $n$ is even & \cref{sec:intro}\\
 $d_i,s_i$ & $p_i-q_i$ and $p_i+q_i-1$ & \cref{sec:intro}\\
 $\Delta,g,S_2$ & $\sum_id_i$, mean gap $\Delta/n$, $\sum_is_i^2$ & \cref{sec:intro}\\
 $\Pp,\E$ & probability and expectation & \cref{sec:intro}\\
-$k$, $D_k$, $d_K$ & integer threshold; $\Pp(X\ge k)-\Pp(Y\ge k)$; Kolmogorov distance & \cref{sec:intro}\\
+$k$, $D_k$, $d_K$ & an integer; $\Pp(X\ge k)-\Pp(Y\ge k)$; Kolmogorov distance & \cref{sec:intro}\\
 $\Bin(n,p)$, $b_n(g)$ & binomial variable; Kolmogorov distance of the symmetric binomial pair & \cref{sec:intro}\\
 $Q,L$ & the two polynomials of the case $n=4$ & \cref{sec:intro}\\
 $\ell_1,\ell_2$, $\bar r$ & integer endpoints in Hoeffding's interval comparison; mean parameter of $W$ & \cref{sec:equal}\\
@@ -315,11 +317,11 @@ $\widetilde X_i,\widetilde Y_i$ & copies of $X_i,Y_i$ built from $R_i,Z_i$ & pro
 $\mathbf 1$ & indicator & proof of \cref{thm:equal}\\
 $h$, $\phi$ & sign of $k-m$; the conditional value of $(D_m+D_{m+1})/2$ given $W=w$ & proof of \cref{thm:equal}\\
 $B,B',\xi$ & $\Bin(m+j,g)$, $B+\xi$, a Bernoulli$(g)$ variable & proof of \cref{thm:equal}\\
-$A_j$ & jumps of $\phi$ & \cref{sec:intro}\\
+$A_j$ & jumps of $\phi$ & proof of \cref{thm:equal}\\
 $B_0$, $\delta_j$ & $\Bin(2m,\frac12)$; $\Pp(|W-m|\le j)-\Pp(|B_0-m|\le j)$ & \cref{sec:intro}\\
 $c^*_{2m}(g)$ & coefficient of $S_2$ obtained from~\eqref{eq:variance} & \eqref{eq:cstar}\\
 $y_i$, $v_i,U,F$ & variables of \cref{lem:three}, later coordinates of $s$; quantities of \cref{lem:three} & \cref{lem:three}\\
-$M$, $e_k$ & four-bit majority sign; elementary symmetric polynomials & proof of \cref{thm:four}\\
+$M$, $e_k$ & $1$, $0$ or $-1$ by the number of positive coordinates; elementary symmetric polynomials & proof of \cref{thm:four}\\
 $x,t,u_i,\sigma$ & coordinates of $s$ and $d$; $\sum_iu_i$ & proof of \cref{thm:four}\\
 $\rho,\kappa,\theta_i$ & $\sum_iy_i^2$, $(1-\rho)/2$, $(1+\rho)/2-y_i^2$ & proof of \cref{thm:four}\\
 $C,G,V$ & slope and intercept of $L/x$; an auxiliary sum & proof of \cref{thm:four}\\
