@@ -1,4 +1,4 @@
-# A lower bound for the Kolmogorov distance between centered Poisson binomial pairs
+# The excess of the Kolmogorov distance over the binomial value for centered Poisson binomial pairs
 
 Yitzchak Shmalo, 16 November 2026.
 
