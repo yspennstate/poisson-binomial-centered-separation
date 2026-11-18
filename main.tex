@@ -49,7 +49,7 @@
 \thispagestyle{fancy}
 
 \begin{abstract}
-Let $X$ and $Y$ be sums of $n$ independent Bernoulli variables with parameters $p_i\ge q_i$, and let $g$ be the mean of the gaps $p_i-q_i$. Aryeh Kontorovich conjectured that for even $n$ the Kolmogorov distance between $X$ and $Y$ is at least $b_n(g)$, the distance between the binomial laws $\Bin(n,(1+g)/2)$ and $\Bin(n,(1-g)/2)$. Christopher D. Long proved this for every even $n$ and every such pair, together with the equality cases and the analogue for odd $n$.For centered pairs, those with $\sum_i(p_i+q_i)=n$, we bound from below the excess of the distance over $b_n(g)$ in two cases, all gaps equal with even $n\ge4$ and $n=4$ with arbitrary gaps. When all gaps equal $g$, both sums are built from one sum $W$ of independent Bernoulli variables with mean $n/2$ and from independent Bernoulli$(g)$ variables, and Hoeffding's interval comparison applied to $W$ shows, for $0<g<1$, that the distance is at least $b_n(g)$ plus a positive multiple of $\sum_i(p_i+q_i-1)^2$. For $n=4$ we give an exact formula for the excess of $\max(D_2,D_3)$ over $b_4(g)$, where $D_k=\Pp(X\ge k)-\Pp(Y\ge k)$.
+Let $X$ and $Y$ be sums of $n$ independent Bernoulli variables with parameters $p_i\ge q_i$, and let $g$ be the mean of the gaps $p_i-q_i$. Aryeh Kontorovich conjectured that for even $n$ the Kolmogorov distance between $X$ and $Y$ is at least $b_n(g)$, the distance between the binomial laws $\Bin(n,(1+g)/2)$ and $\Bin(n,(1-g)/2)$. Christopher D. Long proved this for every even $n$ and every such pair, together with the equality cases and the analogue for odd $n$. For centered pairs, those with $\sum_i(p_i+q_i)=n$, we bound from below the excess of the distance over $b_n(g)$ in two cases, all gaps equal with even $n\ge4$ and $n=4$ with arbitrary gaps. When all gaps equal $g$, both sums are built from one sum $W$ of independent Bernoulli variables with mean $n/2$ and from independent Bernoulli$(g)$ variables, and Hoeffding's interval comparison applied to $W$ shows, for $0<g<1$, that the distance is at least $b_n(g)$ plus a positive multiple of $\sum_i(p_i+q_i-1)^2$. For $n=4$ we give an exact formula for the excess of $\max(D_2,D_3)$ over $b_4(g)$, where $D_k=\Pp(X\ge k)-\Pp(Y\ge k)$.
 \end{abstract}
 
 \noindent\textit{Keywords:} Poisson binomial distribution, Kolmogorov distance, sums of independent Bernoulli variables, Hoeffding's interval comparison.\\
@@ -71,24 +71,42 @@ d_K(X,Y)\ge b_n(g)\qquad\text{for every even } n.
 \end{equation}
 The right side is the Kolmogorov distance of the symmetric binomial pair $\Bin(n,\frac{1+g}2)$, $\Bin(n,\frac{1-g}2)$, which has the same mean gap; it is attained at $k=n/2$. Since $p_i=(1+s_i+d_i)/2$ and $q_i=(1+s_i-d_i)/2$, both lie in $[0,1]$ precisely when $|s_i|+d_i\le1$; we then call $(s,d)$ feasible.
 
-Two answers on MathOverflow contain partial results. Will Sawin~\cite{Sawin} shows by an exchange argument that if an integer $k$ satisfies $\E Y+1<k<\E X$, then $\Pp(X\ge k)$ is at least, and $\Pp(Y\ge k)$ at most, the corresponding tail of the binomial law with the same mean; this is a case of Hoeffding's tail comparison~\cite{Hoeffding}, stated below. So $D_k$ is bounded below by a difference of two binomial tails. Such a $k$ exists when $g>2/n$; when $g\le2/n$ the interval $(\E Y+1,\E X)$ may contain no integer. The argument also needs a second step that is not proved in~\cite{Sawin}: that at some such $k$ this difference of binomial tails is at least $b_n(g)$.
-
-Thomas Steinke~\cite{Steinke} considers the total variation distance between the two product measures. This distance is at least $d_K(X,Y)$, because $\{X\ge k\}$ is an event of the product space, and for the symmetric binomial pair the likelihood ratio is an increasing function of the sum, so the two distances coincide and equal $b_n(g)$. Hence~\eqref{eq:conj} implies the inequality in which $d_K(X,Y)$ is replaced by the total variation distance. Steinke proves that inequality up to a factor of two, by mapping each pair of Bernoulli laws to a pair symmetric about $\frac12$ with a randomized function.
-
-Leon Jay Gleser~\cite{Gleser} sharpens Hoeffding's tail comparison to Schur-convexity statements for the distribution function, but these compare one sum with the binomial law of the same mean and do not supply the second step above. Wenpin Tang and Fengmin Tang~\cite{TangTang} survey these and other properties of Poisson binomial laws. In later papers Kontorovich~\cite{KontorovichHom,KontorovichTV} proves that the total variation distance between two products of Bernoulli laws, and more generally of arbitrary laws, is at least a universal constant times the distance between the products in which every factor is replaced by the average of its family. For Bernoulli products the best such constant is at most $8/9$~\cite[remark after Theorem~1.5]{KontorovichTV}. When $\sum_i(p_i+q_i)=n$ these averaged products are the symmetric binomial pair, so~\eqref{eq:conj} asserts for such pairs the corresponding inequality for the Kolmogorov distance with constant~$1$. Since $d_K(X,Y)$ is at most the total variation distance, these lower bounds do not bound $d_K(X,Y)$ from below.
-
-We call the pair centered when $\sum_is_i=0$, that is, $\E X+\E Y=n$. With $n=2m$ this means $\E X=m+ng/2$ and $\E Y=m-ng/2$, so the binomial laws with the same means as $X$ and $Y$ are $\Bin(n,\frac{1+g}2)$ and $\Bin(n,\frac{1-g}2)$, and $k=m$ satisfies $\E Y+1\le m\le\E X$ whenever $g\ge2/n$. Hoeffding's tail comparison~\cite{Hoeffding}, which holds with non-strict inequalities~\cite[Theorem~2.1(1)]{TangTang}, states: for a sum $S$ of $n$ independent Bernoulli variables and an integer $c$, $\Pp(S\le c)$ is at most the binomial value with the same mean when $c\le\E S-1$, and at least it when $c\ge\E S$. Applied with $c=m-1$, for centered pairs with $g\ge2/n$ it therefore gives $D_m\ge b_n(g)$ for arbitrary gaps and every even $n$, and the second step is not needed, since the two binomial laws are already the symmetric binomial pair. For $g<2/n$ no integer $k$ satisfies $\E Y+1\le k\le\E X$, and the argument does not apply.
-
-Christopher D. Long~\cite[Theorem~1.1]{Long} proved~\eqref{eq:conj}, and its analogue for odd $n$, for every pair with $p\ge q$, without the centering assumption; for even $n\ge4$ and $g>0$ equality holds only for the symmetric binomial pair. His theorem is stated for the maximum of the $D_k$, and its proof is a reduction to stationary points. We bound from below the excess of $d_K(X,Y)$ over $b_n(g)$ for centered pairs in two cases: all gaps equal with $n=2m\ge4$ and every $g$, and $n=4$ with arbitrary gaps. When all gaps are equal, both sums are built in \cref{sec:equal} from one sum $W$ of independent Bernoulli variables with mean $m$ and from independent Bernoulli$(g)$ variables. The mean of $D_m$ and $D_{m+1}$ is then the expectation of a function of $W$ that is symmetric about $m$ and increases towards $m$, and the comparison of $X$ and $Y$ with binomial laws at one point is replaced by Hoeffding's interval comparison of $W$ with $\Bin(2m,\frac12)$ on intervals centered at $m$. This gives the excess as a sum of nonnegative terms, \eqref{eq:exact}, and a variance identity gives the term in $S_2$.
-
-For $n=4$ and every $g$, $D_2$ and $D_3$ are explicit polynomials in $(s,d)$, and the conjecture reduces to an inequality between two polynomials, stated in \cref{thm:four}.
+Christopher D. Long~\cite[Theorem~1.1]{Long} proved~\eqref{eq:conj} for every such pair, together
+with its analogue for odd $n$, and showed that for even $n\ge4$ and $0<g<1$ equality holds only
+for the symmetric binomial pair. His theorem determines the pairs with $d_K(X,Y)=b_n(g)$; it gives
+no lower bound for $d_K(X,Y)-b_n(g)$ at the other pairs. Call the pair centered when
+$\sum_is_i=0$, that is, $\E X+\E Y=n$, and let $n=2m$. For centered pairs with $g\ge2/n$ there is
+a short proof of $D_m\ge b_{2m}(g)$ by Hoeffding's tail comparison~\cite{Hoeffding}, which holds with
+non-strict inequalities~\cite[Theorem~2.1(1)]{TangTang}: for a sum $S$
+of $n$ independent Bernoulli variables and an integer $c$, $\Pp(S\le c)$ is at most the
+probability for the binomial law with the same mean when $c\le\E S-1$, and at least that
+probability when $c\ge\E S$; the integer $c=m-1$ satisfies $\E Y\le c\le\E X-1$ exactly when
+$g\ge2/n$. This compares $X$ and $Y$ with binomial laws at the single point $m$, it does not
+apply when $g<2/n$, and it too gives no term beyond $b_{2m}(g)$. Suppose now that every gap equals
+$g$, with $0<g<1$. Let $R_1,\dots,R_n$ be independent Bernoulli variables with parameters
+$r_i=\frac12+\frac{s_i}{2(1-g)}$, let $Z_1,\dots,Z_n$ be independent Bernoulli$(g)$ variables
+independent of the $R_i$, and put $W=R_1+\dots+R_n$. Then $\sum_i\max(R_i,Z_i)$ has the law of
+$X$, $\sum_iR_i(1-Z_i)$ has the law of $Y$, and $\E W=m$, so Hoeffding's interval
+comparison~\cite[Theorem~5]{Hoeffding} applies to $W$ on every interval centered at $m$:
+\[
+\Pp(|W-m|\le j)\ \ge\ \Pp\bigl\{|\Bin(2m,\tfrac12)-m|\le j\bigr\},\qquad 0\le j\le m-1 .
+\]
+Given $W=w$, the two sums have the laws of $w+\Bin(2m-w,g)$ and $\Bin(w,1-g)$, and the value of
+$(D_m+D_{m+1})/2$ for that pair is symmetric about $w=m$ and decreases as $|w-m|$ grows. Hence
+$(D_m+D_{m+1})/2-b_{2m}(g)$ is a combination, with positive coefficients, of the differences of
+the two sides of the display, and these differences, weighted by $2j+1$, sum to
+$\operatorname{Var}\Bin(2m,\tfrac12)-\operatorname{Var}W=S_2/(4(1-g)^2)$. Since
+$d_K(X,Y)\ge(D_m+D_{m+1})/2$, this gives the bound~\eqref{eq:equal} of \cref{thm:equal} for every
+$0<g<1$ and $n=2m\ge4$. For $n=4$ the gaps may differ: $\max(D_2,D_3)-b_4(g)$ equals a
+nonnegative polynomial in the gaps plus $(|L|-Q)/8$, where $Q$ and $L$ are the polynomials of
+\cref{thm:four}, and $Q\le|L|$ at every feasible point.
 
 \begin{theorem}[equal gaps]\label{thm:equal}
 Let $n=2m\ge4$, suppose $d_i=g$ for every $i$, and suppose $\sum_i s_i=0$. Then
 \begin{equation}\label{eq:equal}
 \frac{D_m+D_{m+1}}2\ge b_{2m}(g)+\frac{m+1}{24}\,g^{m-1}(1-g)^{m-2}S_2 .
 \end{equation}
-In particular $d_K(X,Y)\ge b_{2m}(g)$, and for $g>0$ equality $d_K(X,Y)=b_{2m}(g)$ holds only when every $s_i$ vanishes.
+In particular $d_K(X,Y)\ge b_{2m}(g)$, and for $g>0$ equality $d_K(X,Y)=b_{2m}(g)$ holds only when every $s_i$ vanishes; these two statements are cases of \cite[Theorem~1.1]{Long}.
 \end{theorem}
 
 The excess of $(D_m+D_{m+1})/2$ over $b_{2m}(g)$ has an exact expression as a sum of nonnegative terms, given in~\eqref{eq:exact}, and~\eqref{eq:cstar} gives a coefficient of $S_2$ at least as large as the one in~\eqref{eq:equal}. For $n=2$ the average $(D_1+D_2)/2$ equals $b_2(g)=g$ for every pair (\cref{rem:n2}), so no positive multiple of $S_2$ can be added there.
@@ -104,10 +122,16 @@ If $(s,d)$ is feasible, then $Q\le|L|$, and $|L|\ge\frac83Q$ when $Q>0$; the con
 \max(D_2,D_3)-b_4(g)=\frac1{384}\sum_{i<j}(d_i-d_j)^2\bigl[5\Delta-4(d_i+d_j)\bigr]+\frac{|L|-Q}8\ \ge0 ,
 \end{equation}
 and hence $d_K(X,Y)\ge\max(D_2,D_3)\ge b_4(g)$.
-For $\Delta>0$, equality $d_K(X,Y)=b_4(g)$ holds only for the symmetric binomial pair.
+For $\Delta>0$, equality $d_K(X,Y)=b_4(g)$ holds only for the symmetric binomial pair. The last two statements are cases of \cite[Theorem~1.1]{Long}.
 \end{theorem}
 
 The inequality $Q\le|L|$ needs proof only when $Q>0$. In that case some $s_i^2$ exceeds $S_2/2$, and the proof in \cref{sec:four} reduces the inequality, after the reflection $s\mapsto-s$, to \cref{lem:three}.
+
+Two answers on MathOverflow contain partial results. Will Sawin~\cite{Sawin} shows by an exchange argument that if an integer $k$ satisfies $\E Y+1<k<\E X$, then $\Pp(X\ge k)$ is at least, and $\Pp(Y\ge k)$ at most, the corresponding tail of the binomial law with the same mean; this is a case of Hoeffding's tail comparison~\cite{Hoeffding}, stated above. So $D_k$ is bounded below by a difference of two binomial tails. Such a $k$ exists when $g>2/n$; when $g\le2/n$ the interval $(\E Y+1,\E X)$ may contain no integer. The argument also needs a second step that is not proved in~\cite{Sawin}: that at some such $k$ this difference of binomial tails is at least $b_n(g)$.
+
+Thomas Steinke~\cite{Steinke} considers the total variation distance between the two product measures. This distance is at least $d_K(X,Y)$, because $\{X\ge k\}$ is an event of the product space, and for the symmetric binomial pair the likelihood ratio is an increasing function of the sum, so the two distances coincide and equal $b_n(g)$. Hence~\eqref{eq:conj} implies the inequality in which $d_K(X,Y)$ is replaced by the total variation distance. Steinke proves that inequality up to a factor of two, by mapping each pair of Bernoulli laws to a pair symmetric about $\frac12$ with a randomized function.
+
+Leon Jay Gleser~\cite{Gleser} sharpens Hoeffding's tail comparison to Schur-convexity statements for the distribution function, but these compare one sum with the binomial law of the same mean and do not supply the second step above. Wenpin Tang and Fengmin Tang~\cite{TangTang} survey these and other properties of Poisson binomial laws. In later papers Kontorovich~\cite{KontorovichHom,KontorovichTV} proves that the total variation distance between two products of Bernoulli laws, and more generally of arbitrary laws, is at least a universal constant times the distance between the products in which every factor is replaced by the average of its family. For Bernoulli products the best such constant is at most $8/9$~\cite[remark after Theorem~1.5]{KontorovichTV}. When $\sum_i(p_i+q_i)=n$ these averaged products are the symmetric binomial pair, so~\eqref{eq:conj} asserts for such pairs the corresponding inequality for the Kolmogorov distance with constant~$1$. Since $d_K(X,Y)$ is at most the total variation distance, these lower bounds do not bound $d_K(X,Y)$ from below.
 
 The lower bound in~\eqref{eq:equal} is for the mean of $D_m$ and $D_{m+1}$, which is at most $d_K(X,Y)$; \cite[Theorem~1.1]{Long} is stated for the maximum. For unequal gaps with $n\ge6$ we do not know the order of the excess.
 
@@ -179,7 +203,7 @@ Since $d_K(X,Y)\ge(D_m+D_{m+1})/2$, we get $d_K(X,Y)\ge b_n(g)$, with equality f
 \end{proof}
 
 \begin{remark}\label{rem:n2}
-For $n=2$ and every pair, $D_1+D_2=\E X-\E Y=2g$, while both tail differences of the symmetric binomial pair equal $\bigl((1+g)^2-(1-g)^2\bigr)/4=g$, so $b_2(g)=g$. Hence $d_K(X,Y)\ge(D_1+D_2)/2=b_2(g)$, which proves~\eqref{eq:conj} for $n=2$ without centering and with arbitrary gaps, and the average leaves no room for a positive multiple of $S_2$. In the construction above this is the case $m=1$, where the jump $A_0$ vanishes and $\phi$ is constant.
+For $n=2$ and every pair, $D_1+D_2=\E X-\E Y=2g$, while both tail differences of the symmetric binomial pair equal $\bigl((1+g)^2-(1-g)^2\bigr)/4=g$, so $b_2(g)=g$. Hence $d_K(X,Y)\ge(D_1+D_2)/2=b_2(g)$, which is the case $n=2$ of \cite[Theorem~1.1]{Long}, without centering and with arbitrary gaps, and the average leaves no room for a positive multiple of $S_2$. In the construction above this is the case $m=1$, where the jump $A_0$ vanishes and $\phi$ is constant.
 \end{remark}
 
 \begin{remark}\label{rem:b2m}
