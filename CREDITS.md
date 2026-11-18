@@ -3,7 +3,7 @@
 | Statement | Status | Credit |
 |---|---|---|
 | The question: d_K(X,Y) >= b_n(g) for even n | prior work (open question) | A. Kontorovich, MathOverflow question 477402 (2024) |
-| Reduction to a total variation inequality for product measures via the Neyman-Pearson lemma; that inequality up to a factor of two | prior work | T. Steinke, answer to MathOverflow question 477402 (2024) |
+| The total variation form of the conjecture for the two product measures, which the conjecture implies; that inequality up to a factor of two | prior work | T. Steinke, answer to MathOverflow question 477402 (2024) |
 | Reduction of the case g > 2/n to a comparison of binomial tails via the one-sided form of Hoeffding's extremal comparison | prior work | W. Sawin, answer to MathOverflow question 477402 (2024) |
 | Hoeffding's interval comparison for sums of independent Bernoulli variables with fixed mean | prior work | W. Hoeffding, Ann. Math. Statist. 27 (1956), 713-721, Theorem 5 |
 | Total variation homogenization inequalities (replacing each parameter by the mean, up to constant factors) | related prior work | A. Kontorovich, arXiv:2601.04079 and arXiv:2604.03882 (2026) |
