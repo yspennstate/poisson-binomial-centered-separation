@@ -114,9 +114,9 @@ The general conjecture, without the centering assumption, remains open, as does 
 
 \section{Equal gaps}\label{sec:equal}
 
-We use Hoeffding's interval comparison~\cite[Theorem~5]{Hoeffding}: if $W$ is a sum of $n$ independent Bernoulli variables with $\E W=n\bar r$, so that $\bar r$ is the mean of their parameters, and $\ell_1,\ell_2$ are integers with $0\le \ell_1\le n\bar r\le \ell_2\le n$, then
+We use Hoeffding's interval comparison~\cite[Theorem~5]{Hoeffding}: if $S$ is a sum of $n$ independent Bernoulli variables with $\E S=n\bar r$, so that $\bar r$ is the mean of their parameters, and $\ell_1,\ell_2$ are integers with $0\le \ell_1\le n\bar r\le \ell_2\le n$, then
 \begin{equation}\label{eq:hoeffding}
-\Pp(\ell_1\le W\le \ell_2)\ge\Pp\{\ell_1\le\Bin(n,\bar r)\le \ell_2\}.
+\Pp(\ell_1\le S\le \ell_2)\ge\Pp\{\ell_1\le\Bin(n,\bar r)\le \ell_2\}.
 \end{equation}
 We apply it with $n\bar r=m$ an integer and the intervals $[m-j,m+j]$, $0\le j\le m-1$.
 
@@ -183,7 +183,7 @@ Since $d_K(X,Y)\ge(D_m+D_{m+1})/2$, we get $d_K(X,Y)\ge b_n(g)$, with equality f
 For $m=1$ the jump $A_0$ vanishes, so $\phi$ is constant, equal to $\phi(1)=1-a=g$. Thus $(D_1+D_2)/2=g=b_2(g)$ for every centered pair with two equal gaps, which proves~\eqref{eq:conj} in that case but leaves no room for a positive multiple of $S_2$.
 \end{remark}
 
-\begin{remark}
+\begin{remark}\label{rem:b2m}
 At $n=4$ the coefficient in~\eqref{eq:equal} is $g/8$. The value $b_{2m}(g)$ is explicit: differentiating the two binomial tails gives
 \[
 b_{2m}'(g)=\frac{2m}{2^{2m-1}}\binom{2m-1}{m-1}(1-g^2)^{m-1},\qquad b_{2m}(0)=0,
@@ -266,7 +266,7 @@ Finally, the identity
 \begin{equation}\label{eq:gap}
 \frac{\Delta^3}{16}-e_3(d)=\frac1{48}\sum_{i<j}(d_i-d_j)^2\bigl[5\Delta-4(d_i+d_j)\bigr],
 \end{equation}
-together with~\eqref{eq:max4} and $b_4(\Delta/4)=\frac38\Delta-\frac1{128}\Delta^3$, gives~\eqref{eq:four}. Each bracket in~\eqref{eq:gap} equals $\Delta+4(\Delta-d_i-d_j)\ge\Delta$. So if $\Delta>0$ and $d_K(X,Y)=b_4(g)$, then $\max(D_2,D_3)=b_4(g)$, both terms of~\eqref{eq:four} vanish, and all gaps are equal. Then $Q=-gS_2$, so $|L|-Q\ge gS_2$ forces $S_2=0$. The symmetric binomial pair attains equality, as shown at the end of \cref{sec:equal}.
+together with~\eqref{eq:max4} and $b_4(\Delta/4)=\frac38\Delta-\frac1{128}\Delta^3$ (\cref{rem:b2m}), gives~\eqref{eq:four}. Each bracket in~\eqref{eq:gap} equals $\Delta+4(\Delta-d_i-d_j)\ge\Delta$. So if $\Delta>0$ and $d_K(X,Y)=b_4(g)$, then $\max(D_2,D_3)=b_4(g)$, both terms of~\eqref{eq:four} vanish, and all gaps are equal. Then $Q=-gS_2$, so $|L|-Q\ge gS_2$ forces $S_2=0$. The symmetric binomial pair attains equality, as shown at the end of \cref{sec:equal}.
 \end{proof}
 
 \begin{corollary}\label{cor:single}
