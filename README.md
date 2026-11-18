@@ -7,7 +7,7 @@ Let X and Y be sums of n independent Bernoulli variables with parameters p_i >= 
 - all gaps equal, any even n >= 4 (Theorem 1.1): both sums are built from one sum of independent Bernoulli variables with integer mean, and Hoeffding's interval comparison for that sum writes the excess over the binomial value as a sum of nonnegative terms, bounded below by a positive multiple of sum_i (p_i + q_i - 1)^2;
 - four summands with arbitrary gaps (Theorem 1.2), with an exact formula for the excess of max(D_2, D_3) over b_4(g) and a sharp constant 8/3.
 
-When the gaps are not all zero, equality holds in both cases only for the symmetric binomial pair. The question without centering remains open.
+When the gaps are not all zero, equality holds in both cases only for the symmetric binomial pair. The inequality itself, for every pair and without centering, and its equality cases are due to C. D. Long (github.com/long-mathematics/poisson-binomial-comparison); the paper gives the excess over the binomial value.
 
 ## Files
 
