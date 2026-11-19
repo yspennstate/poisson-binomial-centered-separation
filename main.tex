@@ -50,7 +50,7 @@
 \thispagestyle{fancy}
 
 \begin{abstract}
-Let $X$ and $Y$ be sums of $n$ independent Bernoulli variables with parameters $p_i\ge q_i$, and let $g$ be the mean of the gaps $p_i-q_i$. Aryeh Kontorovich conjectured that for even $n$ the Kolmogorov distance between $X$ and $Y$ is at least $b_n(g)$, the distance between the binomial laws $\Bin(n,(1+g)/2)$ and $\Bin(n,(1-g)/2)$. Christopher D. Long proved this for every such pair. For centered pairs, those with $\sum_i(p_i+q_i)=n$, we bound the excess of the distance over $b_n(g)$ from below. When all gaps equal $g\in(0,1)$ and $n\ge4$, both sums are built from one Bernoulli sum $W$ with mean $n/2$. Hoeffding's lower bound for the probability that $W$ lies in an interval centered at its mean then gives an excess of at least a positive multiple of $\sum_i(p_i+q_i-1)^2$. For $n=4$ and arbitrary gaps we give an exact formula for the excess of $\max(D_2,D_3)$, where $D_k=\Pp(X\ge k)-\Pp(Y\ge k)$.
+Let $X$ and $Y$ be sums of $n$ independent Bernoulli variables with parameters $p_i\ge q_i$, and let $g$ be the mean of the gaps $p_i-q_i$. Aryeh Kontorovich conjectured that for even $n$ the Kolmogorov distance between $X$ and $Y$ is at least $b_n(g)$, the distance between the binomial laws $\Bin(n,(1+g)/2)$ and $\Bin(n,(1-g)/2)$. Christopher D. Long proved this for every such pair. For centered pairs, those with $\sum_i(p_i+q_i)=n$, we bound the excess of the distance over $b_n(g)$ from below in two cases. When all gaps equal $g\in(0,1)$ and $n\ge4$ is even, both sums are built from one Bernoulli sum $W$ with mean $n/2$. Hoeffding's lower bound for the probability that $W$ lies in an interval centered at its mean then gives an excess of at least a positive multiple of $\sum_i(p_i+q_i-1)^2$. For $n=4$ and arbitrary gaps we give an exact formula for the excess of $\max(D_2,D_3)$, where $D_k=\Pp(X\ge k)-\Pp(Y\ge k)$.
 \end{abstract}
 
 \noindent\textit{Keywords:} Poisson binomial distribution, Kolmogorov distance, sums of independent Bernoulli variables, Hoeffding's inequalities for the number of successes.\\
@@ -103,7 +103,7 @@ $d_K(X,Y)\ge(D_m+D_{m+1})/2$ its bound holds for $d_K(X,Y)$ as well. For $m=2$ t
 \cref{thm:four} gives $\max(D_2,D_3)-b_4(g)$ exactly.
 
 \begin{theorem}[equal gaps]\label{thm:equal}
-Let $n=2m\ge4$, suppose $d_i=g$ for every $i$, and suppose $\sum_i s_i=0$. Then
+Let $n=2m\ge4$, let the pair be feasible, suppose $d_i=g$ for every $i$, and suppose $\sum_i s_i=0$. Then
 \begin{equation}\label{eq:equal}
 \frac{D_m+D_{m+1}}2\ge b_{2m}(g)+\frac{m+1}{24}\,g^{m-1}(1-g)^{m-2}S_2 .
 \end{equation}
@@ -113,7 +113,7 @@ In particular $d_K(X,Y)\ge b_{2m}(g)$, and for $g>0$ equality $d_K(X,Y)=b_{2m}(g
 The last two statements are cases of \cite[Theorem~1.1]{Long}; the new part of \cref{thm:equal} is the term in $S_2$. The excess of $(D_m+D_{m+1})/2$ over $b_{2m}(g)$ has an exact expression as a sum of nonnegative terms, given in~\eqref{eq:exact}, and~\eqref{eq:cstar} gives a coefficient of $S_2$ at least as large as the one in~\eqref{eq:equal}. For $n=2$ the average $(D_1+D_2)/2$ equals $b_2(g)=g$ for every pair (\cref{rem:n2}), so no positive multiple of $S_2$ can be added there.
 
 \begin{theorem}[four summands]\label{thm:four}
-Let $n=4$ and $\sum_i s_i=0$, with arbitrary gaps $d_i\ge0$. Put
+Let $n=4$, let the pair be feasible with $\sum_i s_i=0$, and let the gaps $d_i\ge0$ be arbitrary. Put
 \[
 Q=\sum_i\Bigl(d_i-\frac\Delta2\Bigr)s_i^2,\qquad
 L=\sum_i s_id_i+3\sum_i\Bigl(d_i\prod_{j\ne i}s_j+s_i\prod_{j\ne i}d_j\Bigr).
@@ -132,7 +132,7 @@ Two answers on MathOverflow contain partial results. Will Sawin~\cite{Sawin} sho
 
 Thomas Steinke~\cite{Steinke} considers the total variation distance between the two product measures. This distance is at least $d_K(X,Y)$, because $\{X\ge k\}$ is an event of the product space, and for the symmetric binomial pair the likelihood ratio is an increasing function of the sum, so the two distances coincide and equal $b_n(g)$. Hence~\eqref{eq:conj} implies the inequality in which $d_K(X,Y)$ is replaced by the total variation distance. This inequality, with its equality cases, is part of \cite[Theorem~1.1]{Long}. Earlier, Steinke proved it up to a factor of two, by mapping each pair of Bernoulli laws to a pair symmetric about $\frac12$ with a randomized function.
 
-Wenpin Tang and Fengmin Tang~\cite{TangTang} survey Hoeffding's and Gleser's inequalities and other properties of Poisson binomial laws. In later papers Kontorovich~\cite{KontorovichHom,KontorovichTV} proves that the total variation distance between two products of Bernoulli laws, and more generally of arbitrary laws, is at least a universal constant times the distance between the products in which every factor is replaced by the average of its family. For Bernoulli products the best such constant is at most $8/9$~\cite[remark after Theorem~1.5]{KontorovichTV}. For centered pairs these averaged products are the symmetric binomial pair, so~\eqref{eq:conj} asserts for such pairs the corresponding inequality for the Kolmogorov distance with constant~$1$. Since $d_K(X,Y)$ is at most the total variation distance, these lower bounds do not bound $d_K(X,Y)$ from below.
+Wenpin Tang and Fengmin Tang~\cite{TangTang} survey Hoeffding's and Gleser's inequalities and other properties of Poisson binomial laws. Kontorovich~\cite{KontorovichTens} bounds the total variation distance between two product measures from below in terms of the distances between their factors, and in~\cite{KontorovichHom,KontorovichTV} he proves that the total variation distance between two products of Bernoulli laws, and more generally of arbitrary laws, is at least a universal constant times the distance between the products in which every factor is replaced by the average of its family. For Bernoulli products the best such constant is at most $8/9$~\cite[remark after Theorem~1.5]{KontorovichTV}. For centered pairs these averaged products are the symmetric binomial pair, so~\eqref{eq:conj} asserts for such pairs the corresponding inequality for the Kolmogorov distance with constant~$1$. Since $d_K(X,Y)$ is at most the total variation distance, these lower bounds do not bound $d_K(X,Y)$ from below.
 
 The lower bound in~\eqref{eq:equal} is for the average of $D_m$ and $D_{m+1}$, which is at most $d_K(X,Y)$; \cite[Theorem~1.1]{Long} is stated for the maximum. For $m\ge3$ the largest $\gamma$ such that $(D_m+D_{m+1})/2\ge b_{2m}(g)+\gamma S_2$ for all centered pairs with equal gaps is not known, and no positive lower bound for $d_K(X,Y)-b_n(g)$ in terms of the $s_i$ and $d_i$ is known for centered pairs with unequal gaps and $n\ge6$. For $n=6$ and centered pairs, $\max(D_3,D_4)-b_6(g)$ is again the sum of two terms: the first depends on the gaps alone and is nonnegative, and it is not known whether the second is nonnegative for every centered pair. If it is, then $\max(D_3,D_4)\ge b_6(g)$ for every centered pair with $n=6$ (\cref{sec:six}).
 
@@ -439,6 +439,8 @@ $\eta;\beta,\tau;\lambda,\mu$ & a point of $[0,1]^4$; parameters of two families
 \bibitem{KontorovichHom} A.~Kontorovich, A homogenization principle for total variation, arXiv:2604.03882 (2026).
 
 \bibitem{KontorovichTV} A.~Kontorovich, TV homogenization inequalities, arXiv:2601.04079 (2026).
+
+\bibitem{KontorovichTens} A.~Kontorovich, On the tensorization of the variational distance, Electron. Commun. Probab. \textbf{30} (2025), paper no.~32, doi:10.1214/25-ECP680.
 
 \bibitem{Long} C.~D.~Long, The exact Poisson-binomial comparison in every dimension, preprint (2026), with a Lean formalization, \url{https://github.com/long-mathematics/poisson-binomial-comparison}, commit \texttt{b34cde6}.
 
