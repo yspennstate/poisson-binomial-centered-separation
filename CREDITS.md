@@ -13,3 +13,5 @@
 | Lemma 3.1 (U >= 0 and 3F <= U on the region of the lemma) | new, elementary | this paper |
 | Section 4, Proposition 4.1 (six summands: the formulas for D_3 - D_4 and (D_3 + D_4)/2, the gap inequality, and the reduction to Q - H <= abs(L_6), which is left open) | new | this paper, Section 4; code/six_summands_identities.py, code/six_summands_gap.py, code/six_summands_search.py |
 | d_K(X,Y) >= b_n(g) for every n >= 2 and every pair with p >= q, without centering, with the equality cases | prior work | C. D. Long, The exact Poisson-binomial comparison in every dimension, preprint (2026), github.com/long-mathematics/poisson-binomial-comparison, Theorem 1.1 (Lean formalization) |
+| Schur-convexity sharpenings of Hoeffding's tail comparison for one Poisson binomial sum (cited in the introduction) | prior work | L. J. Gleser, On the distribution of the number of successes in independent trials, Ann. Probab. 3 (1975) |
+| Non-strict form of Hoeffding's tail comparison and a survey of Poisson binomial inequalities (cited in the introduction) | prior work | W. Tang and F. Tang, The Poisson binomial distribution - old and new, Statist. Sci. (2023), Theorem 2.1(1) |
