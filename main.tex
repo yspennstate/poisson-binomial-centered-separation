@@ -132,7 +132,7 @@ Thomas Steinke~\cite{Steinke} considers the total variation distance between the
 
 Leon Jay Gleser~\cite{Gleser} sharpens Hoeffding's tail comparison to Schur-convexity statements for the distribution function, but these compare one sum with the binomial law of the same mean and do not supply the second step above. Wenpin Tang and Fengmin Tang~\cite{TangTang} survey these and other properties of Poisson binomial laws. In later papers Kontorovich~\cite{KontorovichHom,KontorovichTV} proves that the total variation distance between two products of Bernoulli laws, and more generally of arbitrary laws, is at least a universal constant times the distance between the products in which every factor is replaced by the average of its family. For Bernoulli products the best such constant is at most $8/9$~\cite[remark after Theorem~1.5]{KontorovichTV}. When $\sum_i(p_i+q_i)=n$ these averaged products are the symmetric binomial pair, so~\eqref{eq:conj} asserts for such pairs the corresponding inequality for the Kolmogorov distance with constant~$1$. Since $d_K(X,Y)$ is at most the total variation distance, these lower bounds do not bound $d_K(X,Y)$ from below.
 
-The lower bound in~\eqref{eq:equal} is for the mean of $D_m$ and $D_{m+1}$, which is at most $d_K(X,Y)$; \cite[Theorem~1.1]{Long} is stated for the maximum. For unequal gaps with $n\ge6$ we do not know the order of the excess.
+The lower bound in~\eqref{eq:equal} is for the mean of $D_m$ and $D_{m+1}$, which is at most $d_K(X,Y)$; \cite[Theorem~1.1]{Long} is stated for the maximum. For $m\ge3$ the largest $c$ such that $(D_m+D_{m+1})/2\ge b_{2m}(g)+cS_2$ for all centered pairs with equal gaps is not known, and no lower bound for $d_K(X,Y)-b_n(g)$ in terms of the $s_i$ and $d_i$ is known for unequal gaps with $n\ge6$.
 
 \section{Equal gaps}\label{sec:equal}
 
@@ -205,8 +205,16 @@ Since $d_K(X,Y)\ge(D_m+D_{m+1})/2$, we get $d_K(X,Y)\ge b_n(g)$, with equality f
 For $n=2$ and every pair, $D_1+D_2=\E X-\E Y=2g$, while both tail differences of the symmetric binomial pair equal $\bigl((1+g)^2-(1-g)^2\bigr)/4=g$, so $b_2(g)=g$. Hence $d_K(X,Y)\ge(D_1+D_2)/2=b_2(g)$, which is the case $n=2$ of \cite[Theorem~1.1]{Long}, without centering and with arbitrary gaps, and the average leaves no room for a positive multiple of $S_2$. In the construction above this is the case $m=1$, where the jump $A_0$ vanishes and $\phi$ is constant.
 \end{remark}
 
+\begin{remark}\label{rem:size}
+For $m=2$ one has $A_0=A_1/3$, so~\eqref{eq:exact} and~\eqref{eq:variance} give $(D_2+D_3)/2-b_4(g)=\frac g8S_2$, and~\eqref{eq:equal} is an equality. For every $m\ge2$,~\eqref{eq:exact} and~\eqref{eq:variance} also give
+\[
+\frac{D_m+D_{m+1}}2-b_{2m}(g)\le\frac1{4a^2}\max_{0\le j\le m-1}\frac{A_j}{2j+1}\,S_2 .
+\]
+Let $m\ge3$, and let $s_i=1-g$ for $m$ indices and $s_i=-(1-g)$ for the others. Then $W=m$ almost surely, and~\eqref{eq:exact} gives $\frac{D_m+D_{m+1}}2-b_{2m}(g)\ge A_0\delta_0=\frac{m-1}2g(1-g)^m\bigl(1-\binom{2m}m4^{-m}\bigr)$, whereas the last term of~\eqref{eq:equal} equals $\frac{m(m+1)}{12}g^{m-1}(1-g)^m$. The quotient of the two is $\frac{6(m-1)}{m(m+1)}\bigl(1-\binom{2m}m4^{-m}\bigr)g^{-(m-2)}$, so for $m\ge3$ and small $g$ the bound~\eqref{eq:equal} is far from the excess at this pair.
+\end{remark}
+
 \begin{remark}\label{rem:b2m}
-At $n=4$ the coefficient in~\eqref{eq:equal} is $g/8$. The value $b_{2m}(g)$ is explicit: differentiating the two binomial tails gives
+The value $b_{2m}(g)$ is explicit: differentiating the two binomial tails gives
 \[
 b_{2m}'(g)=\frac{2m}{2^{2m-1}}\binom{2m-1}{m-1}(1-g^2)^{m-1},\qquad b_{2m}(0)=0,
 \]
