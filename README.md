@@ -1,13 +1,11 @@
 # A lower bound for the excess in the centered Poisson binomial comparison
 
-Yitzchak Shmalo, 16 November 2026.
+Yitzchak Shmalo, 19 November 2026.
 
-Let X and Y be sums of n independent Bernoulli variables with parameters p_i >= q_i, and let g be the mean of the gaps p_i - q_i. Aryeh Kontorovich asked on MathOverflow (question 477402) whether, for even n, the Kolmogorov distance between X and Y is at least the distance between Bin(n, (1+g)/2) and Bin(n, (1-g)/2). The paper proves this in two centered cases, where sum_i (p_i + q_i) = n:
+Let X and Y be sums of n independent Bernoulli variables with parameters p_i >= q_i, and let g be the mean of the gaps p_i - q_i. Aryeh Kontorovich conjectured on MathOverflow (question 477402) that, for even n, the Kolmogorov distance between X and Y is at least b_n(g), the distance between Bin(n, (1+g)/2) and Bin(n, (1-g)/2). C. D. Long proved this for every pair, with its equality cases (github.com/long-mathematics/poisson-binomial-comparison). The paper bounds from below the excess of the distance over b_n(g) for centered pairs, where sum_i (p_i + q_i) = n, in two cases:
 
-- all gaps equal, any even n >= 4 (Theorem 1.1): both sums are built from one sum of independent Bernoulli variables with integer mean, and Hoeffding's interval comparison for that sum writes the excess over the binomial value as a sum of nonnegative terms, bounded below by a positive multiple of sum_i (p_i + q_i - 1)^2;
-- four summands with arbitrary gaps (Theorem 1.2), with an exact formula for the excess of max(D_2, D_3) over b_4(g) and a sharp constant 8/3.
-
-When the gaps are not all zero, equality holds in both cases only for the symmetric binomial pair. The inequality itself, for every pair and without centering, and its equality cases are due to C. D. Long (github.com/long-mathematics/poisson-binomial-comparison); the paper gives lower bounds for the excess over the binomial value.
+- all gaps equal, any even n >= 4 (Theorem 1.1): both sums are built from one sum of independent Bernoulli variables with integer mean, and Hoeffding's interval inequality for that sum writes the excess as a sum of nonnegative terms, bounded below by a positive multiple of sum_i (p_i + q_i - 1)^2;
+- four summands with arbitrary gaps (Theorem 1.2): an exact formula for the excess of max(D_2, D_3) over b_4(g), with a sharp constant 8/3.
 
 ## Files
 
