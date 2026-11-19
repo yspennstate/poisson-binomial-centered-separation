@@ -15,7 +15,7 @@
 \usepackage[capitalise,nameinlink,noabbrev]{cleveref}
 \definecolor{linkblue}{RGB}{22,68,105}
 \hypersetup{colorlinks=true,linkcolor=linkblue,citecolor=linkblue,urlcolor=linkblue,
-  pdftitle={A lower bound for the Kolmogorov distance between centered Poisson binomial pairs},
+  pdftitle={A lower bound for the excess in the centered Poisson binomial comparison},
   pdfauthor={Yitzchak Shmalo},
   pdfsubject={Poisson binomial distribution, Kolmogorov distance, Hoeffding's interval comparison}}
 \urlstyle{same}
@@ -33,7 +33,7 @@
 \newcommand{\Bin}{\operatorname{Bin}}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small Kolmogorov distance between centered Poisson binomial pairs}
+\fancyhead[L]{\small Excess in the centered Poisson binomial comparison}
 \fancyhead[R]{\small 16 November 2026}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
@@ -97,9 +97,8 @@ $(D_m+D_{m+1})/2-b_{2m}(g)$ is a combination, with positive coefficients, of the
 the two sides of the display, and these differences, weighted by $2j+1$, sum to
 $\operatorname{Var}\Bin(2m,\tfrac12)-\operatorname{Var}W=S_2/(4(1-g)^2)$. Since
 $d_K(X,Y)\ge(D_m+D_{m+1})/2$, this gives the bound~\eqref{eq:equal} of \cref{thm:equal} for every
-$0<g<1$ and $n=2m\ge4$. For $n=4$ the gaps may differ: $\max(D_2,D_3)-b_4(g)$ equals a
-nonnegative polynomial in the gaps plus $(|L|-Q)/8$, where $Q$ and $L$ are the polynomials of
-\cref{thm:four}, and $Q\le|L|$ at every feasible point.
+$0<g<1$ and $n=2m\ge4$. For $n=4$ and arbitrary gaps, \cref{thm:four} gives $\max(D_2,D_3)-b_4(g)$
+exactly.
 
 \begin{theorem}[equal gaps]\label{thm:equal}
 Let $n=2m\ge4$, suppose $d_i=g$ for every $i$, and suppose $\sum_i s_i=0$. Then
@@ -144,7 +143,7 @@ We use Hoeffding's interval comparison~\cite[Theorem~5]{Hoeffding}: if $S$ is a 
 We apply it with $n\bar r=m$ an integer and the intervals $[m-j,m+j]$, $0\le j\le m-1$.
 
 \begin{proof}[Proof of \cref{thm:equal}]
-If $g=0$ then $p_i=q_i$ for every $i$ and there is nothing to prove; if $g=1$ then feasibility forces $p_i=1$ and $q_i=0$, so $S_2=0$ and both sides equal $1$. Let $0<g<1$ and put $a=1-g$ and $r_i=(1+s_i/a)/2$. Let $R_1,\dots,R_n$ be independent Bernoulli$(r_i)$ variables, let $Z_1,\dots,Z_n$ be independent Bernoulli$(g)$ variables, independent of the $R_i$, and put $W=R_1+\dots+R_n$. Feasibility $|s_i|\le a$ gives $r_i\in[0,1]$, centering gives $\sum_i r_i=m$, and $q_i=ar_i$, $p_i=g+ar_i$.
+If $g=0$ then $p_i=q_i$ for every $i$ and there is nothing to prove; if $g=1$ then feasibility forces $p_i=1$ and $q_i=0$, so $S_2=0$ and both sides equal $1$. Let $0<g<1$, put $a=1-g$, and let $r_i$, $R_i$, $Z_i$ and $W$ be as in \cref{sec:intro}, so that $r_i=(1+s_i/a)/2$. Feasibility $|s_i|\le a$ gives $r_i\in[0,1]$, centering gives $\sum_i r_i=m$, and $q_i=ar_i$, $p_i=g+ar_i$.
 
 Put
 \[
@@ -336,9 +335,10 @@ $D_k$, $d_K$ & $\Pp(X\ge k)-\Pp(Y\ge k)$; Kolmogorov distance & \cref{sec:intro}
 $\Bin(n,p)$, $b_n(g)$ & binomial variable; Kolmogorov distance of the symmetric binomial pair & \cref{sec:intro}\\
 $Q,L$ & the two polynomials of the case $n=4$ & \cref{sec:intro}\\
 $\ell_1,\ell_2$, $\bar r$ & integer endpoints in Hoeffding's interval comparison; mean of the parameters of $S$ in \eqref{eq:hoeffding} & \cref{sec:equal}\\
-$w$ & a value of $W$ & proof of \cref{thm:equal}\\
-$a$, $r_i$ & $1-g$; $(1+s_i/a)/2$ & proof of \cref{thm:equal}\\
-$R_i,Z_i,W$ & the Bernoulli$(r_i)$ and Bernoulli$(g)$ variables from which $X$ and $Y$ are built, $\sum_iR_i$ & proof of \cref{thm:equal}\\
+$w$ & a value of $W$ & \cref{sec:intro}\\
+$a$ & $1-g$ & proof of \cref{thm:equal}\\
+$r_i$ & $\frac12+\frac{s_i}{2(1-g)}$ & \cref{sec:intro}\\
+$R_i,Z_i,W$ & the Bernoulli$(r_i)$ and Bernoulli$(g)$ variables from which $X$ and $Y$ are built, $\sum_iR_i$ & \cref{sec:intro}\\
 $\widetilde X_i,\widetilde Y_i$ & copies of $X_i,Y_i$ built from $R_i,Z_i$ & proof of \cref{thm:equal}\\
 $\mathbf 1$ & indicator & proof of \cref{thm:equal}\\
 $h$ & sign of $k-m$ & proof of \cref{thm:equal}\\
