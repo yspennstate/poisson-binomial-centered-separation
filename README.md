@@ -17,8 +17,11 @@ When the gaps are not all zero, equality holds in both cases only for the symmet
 - `code/general_uniform.py`: checks the identities of Section 2 (the average, the jumps, the exact excess, the variance identity) by exact convolution on 1,335 rational parameter vectors with n <= 20, and the bound of Theorem 1.1 on the 1,280 of them with n >= 4. Output: `code/uniform_checks.json`.
 - `code/print_formulas.py`: prints the low-dimensional coefficients displayed in Section 2 as exact rationals.
 - `code/verify_paper_identities.py`: a second check of the same identities written in the notation of the paper, with SymPy, together with the equal-gap formulas for m = 2, ..., 6 in exact rationals.
+- `code/six_summands_identities.py`: checks the two identities of Section 4 (six summands) in exact rational arithmetic at 200 random centered pairs, and the formula for b_6(g).
+- `code/six_summands_gap.py`: checks with SymPy the decomposition of e_3(d) - e_5(d) used in the proof of Proposition 4.1, and the values at equal gaps.
+- `code/six_summands_search.py`: checks with SymPy the formulas for Q - H and L_6 on the family s = (beta, -beta, 0, 0, 0, 0) and on the family on which |L_6| / (Q - H) tends to 2, checks in exact arithmetic the rational pair of Section 4 at which Q - H > 0 with no s_i^2 above S_2/2, and searches 25,000 feasible centered pairs in floating point for a violation of Q - H <= |L_6| (evidence, not a proof).
 
-`certificate_checks.py`, `general_uniform.py` and `print_formulas.py` use only the Python 3 standard library; `verify_paper_identities.py` needs SymPy. Each program stops with an error if a check fails.
+`certificate_checks.py`, `general_uniform.py`, `print_formulas.py` and `six_summands_identities.py` use only the Python 3 standard library; `verify_paper_identities.py`, `six_summands_gap.py` and `six_summands_search.py` need SymPy. Each program stops with an error if a check fails.
 
 ## License
 

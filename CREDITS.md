@@ -10,4 +10,5 @@
 | Theorem 1.1 (equal gaps, every even n >= 4, with the exact excess and its lower bound) | new | this paper, Section 2; code/general_uniform.py, code/verify_paper_identities.py |
 | Theorem 1.2 (four summands, arbitrary gaps; Q <= abs(L), abs(L) >= (8/3) Q, sharp) and Corollary 3.2 | new | this paper, Section 3; code/certificate_checks.py, code/verify_paper_identities.py |
 | Lemma 3.1 (U >= 0 and 3F <= U on the region of the lemma) | new, elementary | this paper |
+| Section 4, Proposition 4.1 (six summands: the formulas for D_3 - D_4 and (D_3 + D_4)/2, the gap inequality, and the reduction to Q - H <= abs(L_6), which is left open) | new | this paper, Section 4; code/six_summands_identities.py, code/six_summands_gap.py, code/six_summands_search.py |
 | d_K(X,Y) >= b_n(g) for every n >= 2 and every pair with p >= q, without centering, with the equality cases | prior work | C. D. Long, The exact Poisson-binomial comparison in every dimension, preprint (2026), github.com/long-mathematics/poisson-binomial-comparison, Theorem 1.1 (Lean formalization) |

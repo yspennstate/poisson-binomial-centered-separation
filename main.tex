@@ -17,7 +17,7 @@
 \hypersetup{colorlinks=true,linkcolor=linkblue,citecolor=linkblue,urlcolor=linkblue,
   pdftitle={A lower bound for the excess in the centered Poisson binomial comparison},
   pdfauthor={Yitzchak Shmalo},
-  pdfsubject={Poisson binomial distribution, Kolmogorov distance, Hoeffding's interval comparison}}
+  pdfsubject={Poisson binomial distribution, Kolmogorov distance, Hoeffding's interval inequality}}
 \urlstyle{same}
 \setlength{\parindent}{1.2em}
 \setlength{\parskip}{0.2em}
@@ -26,6 +26,7 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 \newcommand{\Pp}{\mathbb P}
@@ -49,10 +50,10 @@
 \thispagestyle{fancy}
 
 \begin{abstract}
-Let $X$ and $Y$ be sums of $n$ independent Bernoulli variables with parameters $p_i\ge q_i$, and let $g$ be the mean of the gaps $p_i-q_i$. Aryeh Kontorovich conjectured that for even $n$ the Kolmogorov distance between $X$ and $Y$ is at least $b_n(g)$, the distance between the binomial laws $\Bin(n,(1+g)/2)$ and $\Bin(n,(1-g)/2)$. Christopher D. Long proved this for every even $n$ and every such pair, together with the equality cases and the analogue for odd $n$. For centered pairs, those with $\sum_i(p_i+q_i)=n$, we bound from below the excess of the distance over $b_n(g)$ in two cases, all gaps equal with even $n\ge4$ and $n=4$ with arbitrary gaps. When all gaps equal $g$, both sums are built from one sum $W$ of independent Bernoulli variables with mean $n/2$ and from independent Bernoulli$(g)$ variables, and Hoeffding's interval comparison applied to $W$ shows, for $0<g<1$, that the distance is at least $b_n(g)$ plus a positive multiple of $\sum_i(p_i+q_i-1)^2$. For $n=4$ we give an exact formula for the excess of $\max(D_2,D_3)$ over $b_4(g)$, where $D_k=\Pp(X\ge k)-\Pp(Y\ge k)$.
+Let $X$ and $Y$ be sums of $n$ independent Bernoulli variables with parameters $p_i\ge q_i$, and let $g$ be the mean of the gaps $p_i-q_i$. Aryeh Kontorovich conjectured that for even $n$ the Kolmogorov distance between $X$ and $Y$ is at least $b_n(g)$, the distance between the binomial laws $\Bin(n,(1+g)/2)$ and $\Bin(n,(1-g)/2)$. Christopher D. Long proved this for every even $n$ and every such pair, together with the equality cases and the analogue for odd $n$. For centered pairs, those with $\sum_i(p_i+q_i)=n$, we bound from below the excess of the distance over $b_n(g)$ in two cases, all gaps equal with even $n\ge4$ and $n=4$ with arbitrary gaps. When all gaps equal $g$, both sums are built from one sum $W$ of independent Bernoulli variables with mean $n/2$ and from independent Bernoulli$(g)$ variables, and Hoeffding's lower bound for the probability that $W$ lies in an interval centered at its mean shows, for $0<g<1$, that the distance is at least $b_n(g)$ plus a positive multiple of $\sum_i(p_i+q_i-1)^2$. For $n=4$ we give an exact formula for the excess of $\max(D_2,D_3)$ over $b_4(g)$, where $D_k=\Pp(X\ge k)-\Pp(Y\ge k)$.
 \end{abstract}
 
-\noindent\textit{Keywords:} Poisson binomial distribution, Kolmogorov distance, sums of independent Bernoulli variables, Hoeffding's interval comparison.\\
+\noindent\textit{Keywords:} Poisson binomial distribution, Kolmogorov distance, sums of independent Bernoulli variables, Hoeffding's inequalities for the number of successes.\\
 \textit{2020 Mathematics Subject Classification:} 60E15, 60C05.
 
 \section{Introduction}\label{sec:intro}
@@ -61,7 +62,7 @@ Let $X=X_1+\dots+X_n$ and $Y=Y_1+\dots+Y_n$, where the $X_i$ are independent Ber
 \[
 d_i=p_i-q_i,\qquad s_i=p_i+q_i-1,\qquad \Delta=\sum_i d_i,\qquad g=\frac{\Delta}{n},\qquad S_2=\sum_i s_i^2,
 \]
-so that the $d_i$ are the gaps and $g$ is the mean gap, and call $D_k=\Pp(X\ge k)-\Pp(Y\ge k)$ the tail difference at $k$, where $\Pp$ and $\E$ denote probability and expectation. A coordinatewise coupling shows $D_k\ge0$, so the Kolmogorov distance is $d_K(X,Y)=\max_k D_k$. For even $n$, writing $\Bin(n,p)$ for a binomial variable with $n$ trials and success probability $p$, put
+so that the $d_i$ are the gaps and $g$ is the mean gap. Call $D_k=\Pp(X\ge k)-\Pp(Y\ge k)$ the tail difference at $k$. A coordinatewise coupling shows $D_k\ge0$, so the Kolmogorov distance is $d_K(X,Y)=\max_k D_k$. For even $n$, writing $\Bin(n,p)$ for a binomial variable with $n$ trials and success probability $p$, put
 \[
 b_n(g)=\Pp\{\Bin(n,\tfrac{1+g}2)\ge\tfrac n2\}-\Pp\{\Bin(n,\tfrac{1-g}2)\ge\tfrac n2\}.
 \]
@@ -69,36 +70,42 @@ In a question on MathOverflow~\cite{Kontorovich}, Aryeh Kontorovich conjectured 
 \begin{equation}\label{eq:conj}
 d_K(X,Y)\ge b_n(g)\qquad\text{for every even } n.
 \end{equation}
-The right side is the Kolmogorov distance of the symmetric binomial pair $\Bin(n,\frac{1+g}2)$, $\Bin(n,\frac{1-g}2)$, which has the same mean gap; it is attained at $k=n/2$. Since $p_i=(1+s_i+d_i)/2$ and $q_i=(1+s_i-d_i)/2$, both lie in $[0,1]$ precisely when $|s_i|+d_i\le1$; we then call $(s,d)$ feasible.
+The right side is the Kolmogorov distance of the symmetric binomial pair $\Bin(n,\frac{1+g}2)$, $\Bin(n,\frac{1-g}2)$, which has the same mean gap; it is attained at $k=n/2$. Since $p_i=(1+s_i+d_i)/2$ and $q_i=(1+s_i-d_i)/2$, both lie in $[0,1]$ precisely when $|s_i|+d_i\le1$. Write $s=(s_1,\dots,s_n)$ and $d=(d_1,\dots,d_n)$; we call $(s,d)$, and the pair $X,Y$, feasible when $|s_i|+d_i\le1$ for every $i$. All pairs below are feasible.
 
 Christopher D. Long~\cite[Theorem~1.1]{Long} proved~\eqref{eq:conj} for every such pair, together
-with its analogue for odd $n$, and showed that for even $n\ge4$ and $0<g<1$ equality holds only
-for the symmetric binomial pair. His theorem determines the pairs with $d_K(X,Y)=b_n(g)$; it gives
-no lower bound for $d_K(X,Y)-b_n(g)$ at the other pairs. Call the pair centered when
-$\sum_is_i=0$, that is, $\E X+\E Y=n$, and let $n=2m$. For centered pairs with $g\ge2/n$ there is
-a short proof of $D_m\ge b_{2m}(g)$ by Hoeffding's tail comparison~\cite{Hoeffding}, which holds with
-non-strict inequalities~\cite[Theorem~2.1(1)]{TangTang}: for a sum $S$
-of $n$ independent Bernoulli variables and an integer $c$, $\Pp(S\le c)$ is at most the
-probability for the binomial law with the same mean when $c\le\E S-1$, and at least that
-probability when $c\ge\E S$; the integer $c=m-1$ satisfies $\E Y\le c\le\E X-1$ exactly when
-$g\ge2/n$. This compares $X$ and $Y$ with binomial laws at the single point $m$, it does not
-apply when $g<2/n$, and it too gives no term beyond $b_{2m}(g)$. Suppose now that every gap equals
-$g$, with $0<g<1$. Let $R_1,\dots,R_n$ be independent Bernoulli variables with parameters
-$r_i=\frac12+\frac{s_i}{2(1-g)}$, let $Z_1,\dots,Z_n$ be independent Bernoulli$(g)$ variables
-independent of the $R_i$, and put $W=R_1+\dots+R_n$. Then $\sum_i\max(R_i,Z_i)$ has the law of
-$X$, $\sum_iR_i(1-Z_i)$ has the law of $Y$, and $\E W=m$, so Hoeffding's interval
-comparison~\cite[Theorem~5]{Hoeffding} applies to $W$ on every interval centered at $m$:
+with its analogue for odd $n$; following him we call~\eqref{eq:conj} the Poisson binomial comparison, and for a quantity $T\le d_K(X,Y)$ we call $T-b_n(g)$ the excess of $T$. He also showed that for even $n\ge4$ and $0<g<1$ equality holds only for
+the symmetric binomial pair. His theorem determines the pairs with $d_K(X,Y)=b_n(g)$ and gives no
+lower bound for $d_K(X,Y)-b_n(g)$ at the other pairs, that is, no quantitative form of the equality statement. Call the pair centered when $\sum_is_i=0$,
+that is, $\E X+\E Y=n$, and write $n=2m$. For a sum $S$ of $n$ independent Bernoulli variables and an
+integer $c$, Hoeffding's tail comparison~\cite[Theorem~4]{Hoeffding}, which holds with non-strict
+inequalities~\cite[Theorem~2.1(1)]{TangTang}, states that $\Pp(S\le c)$ is at most the
+corresponding probability for the binomial law with the same mean when $c\le\E S-1$, and at least
+that probability when $c\ge\E S$. For a centered pair, $\E X=m+\frac{ng}2$ and
+$\E Y=m-\frac{ng}2$, and the two binomial laws are those of the symmetric binomial pair. If
+$g\ge2/n$, then $\E Y\le m-1\le\E X-1$, and the comparison at $c=m-1$, applied to $X$ and to $Y$ as
+in Sawin's answer~\cite{Sawin}, gives $D_m\ge b_{2m}(g)$. This argument uses the single threshold $k=m$, requires
+$g\ge2/n$, and gives no term beyond $b_{2m}(g)$.
+
+Suppose now that $n=2m\ge4$, the pair is centered and every gap equals $g$, with $0<g<1$. Let $R_1,\dots,R_n$ be independent Bernoulli
+variables with parameters $r_i=\frac12+\frac{s_i}{2(1-g)}$, let $Z_1,\dots,Z_n$ be independent
+Bernoulli$(g)$ variables independent of the $R_i$, and put $W=R_1+\dots+R_n$. Then
+$\sum_i\max(R_i,Z_i)$ has the law of $X$, $\sum_iR_i(1-Z_i)$ has the law of $Y$, and $\E W=m$.
+Given $W=w$, the two sums have the laws of $w+\Bin(2m-w,g)$ and $\Bin(w,1-g)$, and the value of
+$(D_m+D_{m+1})/2$ for that pair is symmetric about $w=m$ and decreases as $|w-m|$ grows.
+Hoeffding's interval inequality~\cite[Theorem~5]{Hoeffding} gives
 \[
 \Pp(|W-m|\le j)\ \ge\ \Pp\bigl\{|\Bin(2m,\tfrac12)-m|\le j\bigr\},\qquad 0\le j\le m-1 .
 \]
-Given $W=w$, the two sums have the laws of $w+\Bin(2m-w,g)$ and $\Bin(w,1-g)$, and the value of
-$(D_m+D_{m+1})/2$ for that pair is symmetric about $w=m$ and decreases as $|w-m|$ grows. Hence
-$(D_m+D_{m+1})/2-b_{2m}(g)$ is a combination, with positive coefficients, of the differences of
-the two sides of the display, and these differences, weighted by $2j+1$, sum to
+Hence $(D_m+D_{m+1})/2-b_{2m}(g)$ is a combination, with positive coefficients, of the differences
+of the two sides of the display, and these differences, weighted by $2j+1$, sum to
 $\operatorname{Var}\Bin(2m,\tfrac12)-\operatorname{Var}W=S_2/(4(1-g)^2)$. Since
-$d_K(X,Y)\ge(D_m+D_{m+1})/2$, this gives the bound~\eqref{eq:equal} of \cref{thm:equal} for every
-$0<g<1$ and $n=2m\ge4$. For $n=4$ and arbitrary gaps, \cref{thm:four} gives $\max(D_2,D_3)-b_4(g)$
-exactly.
+$d_K(X,Y)\ge(D_m+D_{m+1})/2$, this gives, for every centered pair with equal gaps and
+$n=2m\ge4$,
+\[
+d_K(X,Y)\ \ge\ b_{2m}(g)+\frac{m+1}{24}\,g^{m-1}(1-g)^{m-2}S_2 ;
+\]
+\cref{thm:equal} gives this bound for $(D_m+D_{m+1})/2$. For $m=2$, \eqref{eq:equal} is an equality, and for $m\ge3$ and small $g$ there is a pair at which the excess of $(D_m+D_{m+1})/2$ is much larger than the last term of the display (\cref{rem:size}). For $n=4$ and arbitrary gaps,
+\cref{thm:four} gives $\max(D_2,D_3)-b_4(g)$ exactly.
 
 \begin{theorem}[equal gaps]\label{thm:equal}
 Let $n=2m\ge4$, suppose $d_i=g$ for every $i$, and suppose $\sum_i s_i=0$. Then
@@ -116,27 +123,25 @@ Let $n=4$ and $\sum_i s_i=0$, with arbitrary gaps $d_i\ge0$. Put
 Q=\sum_i\Bigl(d_i-\frac\Delta2\Bigr)s_i^2,\qquad
 L=\sum_i s_id_i+3\sum_i\Bigl(d_i\prod_{j\ne i}s_j+s_i\prod_{j\ne i}d_j\Bigr).
 \]
-If $(s,d)$ is feasible, then $Q\le|L|$, and $|L|\ge\frac83Q$ when $Q>0$; the constant $\frac83$ cannot be increased. For feasible $(s,d)$
+Then $Q\le|L|$, and $|L|\ge\frac83Q$ when $Q>0$; the constant $\frac83$ cannot be increased. Moreover
 \begin{equation}\label{eq:four}
 \max(D_2,D_3)-b_4(g)=\frac1{384}\sum_{i<j}(d_i-d_j)^2\bigl[5\Delta-4(d_i+d_j)\bigr]+\frac{|L|-Q}8\ \ge0 ,
 \end{equation}
 and hence $d_K(X,Y)\ge\max(D_2,D_3)\ge b_4(g)$.
-For $\Delta>0$, equality $d_K(X,Y)=b_4(g)$ holds only for the symmetric binomial pair. The last two statements are cases of \cite[Theorem~1.1]{Long}.
+For $\Delta>0$, equality $d_K(X,Y)=b_4(g)$ holds only for the symmetric binomial pair. The inequality $d_K(X,Y)\ge b_4(g)$ and this equality statement are cases of \cite[Theorem~1.1]{Long}.
 \end{theorem}
 
-The inequality $Q\le|L|$ needs proof only when $Q>0$. In that case some $s_i^2$ exceeds $S_2/2$, and the proof in \cref{sec:four} reduces the inequality, after the reflection $s\mapsto-s$, to \cref{lem:three}.
-
-Two answers on MathOverflow contain partial results. Will Sawin~\cite{Sawin} shows by an exchange argument that if an integer $k$ satisfies $\E Y+1<k<\E X$, then $\Pp(X\ge k)$ is at least, and $\Pp(Y\ge k)$ at most, the corresponding tail of the binomial law with the same mean; this is a case of Hoeffding's tail comparison~\cite{Hoeffding}, stated above. So $D_k$ is bounded below by a difference of two binomial tails. Such a $k$ exists when $g>2/n$; when $g\le2/n$ the interval $(\E Y+1,\E X)$ may contain no integer. The argument also needs a second step that is not proved in~\cite{Sawin}: that at some such $k$ this difference of binomial tails is at least $b_n(g)$.
+Two answers on MathOverflow contain partial results. Will Sawin~\cite{Sawin} shows by an exchange argument that if an integer $k$ satisfies $\E Y+1<k<\E X$, then $\Pp(X\ge k)$ is at least, and $\Pp(Y\ge k)$ at most, the corresponding tail of the binomial law with the same mean; this is a case of Hoeffding's tail comparison~\cite{Hoeffding}, stated above, and for centered pairs with $g>2/n$ and $k=m$ it is the argument given there; the case $g=2/n$ uses the non-strict form~\cite[Theorem~2.1(1)]{TangTang}. For pairs that are not centered the two binomial laws have success probabilities $\E X/n$ and $\E Y/n$, so that the comparison of the difference of their tails with $b_n(g)$ is a further step. Leon Jay Gleser~\cite{Gleser} sharpens Hoeffding's tail comparison to Schur-convexity statements for the distribution function of one sum; they give no bound for the difference of the binomial tails with success probabilities $\E X/n$ and $\E Y/n$ in terms of $b_n(g)$.
 
 Thomas Steinke~\cite{Steinke} considers the total variation distance between the two product measures. This distance is at least $d_K(X,Y)$, because $\{X\ge k\}$ is an event of the product space, and for the symmetric binomial pair the likelihood ratio is an increasing function of the sum, so the two distances coincide and equal $b_n(g)$. Hence~\eqref{eq:conj} implies the inequality in which $d_K(X,Y)$ is replaced by the total variation distance. This inequality, with its equality cases, is part of \cite[Theorem~1.1]{Long}. Earlier, Steinke proved it up to a factor of two, by mapping each pair of Bernoulli laws to a pair symmetric about $\frac12$ with a randomized function.
 
-Leon Jay Gleser~\cite{Gleser} sharpens Hoeffding's tail comparison to Schur-convexity statements for the distribution function, but these compare one sum with the binomial law of the same mean and do not supply the second step above. Wenpin Tang and Fengmin Tang~\cite{TangTang} survey these and other properties of Poisson binomial laws. In later papers Kontorovich~\cite{KontorovichHom,KontorovichTV} proves that the total variation distance between two products of Bernoulli laws, and more generally of arbitrary laws, is at least a universal constant times the distance between the products in which every factor is replaced by the average of its family. For Bernoulli products the best such constant is at most $8/9$~\cite[remark after Theorem~1.5]{KontorovichTV}. When $\sum_i(p_i+q_i)=n$ these averaged products are the symmetric binomial pair, so~\eqref{eq:conj} asserts for such pairs the corresponding inequality for the Kolmogorov distance with constant~$1$. Since $d_K(X,Y)$ is at most the total variation distance, these lower bounds do not bound $d_K(X,Y)$ from below.
+Wenpin Tang and Fengmin Tang~\cite{TangTang} survey Hoeffding's and Gleser's inequalities and other properties of Poisson binomial laws. In later papers Kontorovich~\cite{KontorovichHom,KontorovichTV} proves that the total variation distance between two products of Bernoulli laws, and more generally of arbitrary laws, is at least a universal constant times the distance between the products in which every factor is replaced by the average of its family. For Bernoulli products the best such constant is at most $8/9$~\cite[remark after Theorem~1.5]{KontorovichTV}. For centered pairs these averaged products are the symmetric binomial pair, so~\eqref{eq:conj} asserts for such pairs the corresponding inequality for the Kolmogorov distance with constant~$1$. Since $d_K(X,Y)$ is at most the total variation distance, these lower bounds do not bound $d_K(X,Y)$ from below.
 
-The lower bound in~\eqref{eq:equal} is for the mean of $D_m$ and $D_{m+1}$, which is at most $d_K(X,Y)$; \cite[Theorem~1.1]{Long} is stated for the maximum. For $m\ge3$ the largest $c$ such that $(D_m+D_{m+1})/2\ge b_{2m}(g)+cS_2$ for all centered pairs with equal gaps is not known, and no lower bound for $d_K(X,Y)-b_n(g)$ in terms of the $s_i$ and $d_i$ is known for unequal gaps with $n\ge6$.
+The lower bound in~\eqref{eq:equal} is for the average of $D_m$ and $D_{m+1}$, which is at most $d_K(X,Y)$; \cite[Theorem~1.1]{Long} is stated for the maximum. For $m\ge3$ the largest $\gamma$ such that $(D_m+D_{m+1})/2\ge b_{2m}(g)+\gamma S_2$ for all centered pairs with equal gaps is not known, and no positive lower bound for $d_K(X,Y)-b_n(g)$ in terms of the $s_i$ and $d_i$ is known for centered pairs with unequal gaps and $n\ge6$. For $n=6$ and centered pairs, $\max(D_3,D_4)-b_6(g)$ is again the sum of two terms: the first depends on the gaps alone and is nonnegative, and it is not known whether the second is nonnegative for every centered pair. If it is, then $\max(D_3,D_4)\ge b_6(g)$ for every centered pair with $n=6$ (\cref{sec:six}).
 
 \section{Equal gaps}\label{sec:equal}
 
-We use Hoeffding's interval comparison~\cite[Theorem~5]{Hoeffding}: if $S$ is a sum of $n$ independent Bernoulli variables with $\E S=n\bar r$, so that $\bar r$ is the mean of their parameters, and $\ell_1,\ell_2$ are integers with $0\le \ell_1\le n\bar r\le \ell_2\le n$, then
+We use Hoeffding's interval inequality~\cite[Theorem~5]{Hoeffding}: if $S$ is a sum of $n$ independent Bernoulli variables with $\E S=n\bar r$, so that $\bar r$ is the mean of their parameters, and $\ell_1,\ell_2$ are integers with $0\le \ell_1\le n\bar r\le \ell_2\le n$, then
 \begin{equation}\label{eq:hoeffding}
 \Pp(\ell_1\le S\le \ell_2)\ge\Pp\{\ell_1\le\Bin(n,\bar r)\le \ell_2\}.
 \end{equation}
@@ -179,7 +184,7 @@ All $A_j$ are positive when $m\ge2$. Telescoping and symmetry give, for $0\le w\
 \phi(w)=\phi(0)+\sum_{j=0}^{m-1}A_j\,\mathbf 1_{\{|w-m|\le j\}} .
 \end{equation}
 
-Let $B_0$ have the law $\Bin(2m,\frac12)$, and put $\delta_j=\Pp(|W-m|\le j)-\Pp(|B_0-m|\le j)$ for $0\le j\le m-1$. By~\eqref{eq:hoeffding} with $\ell_1=m-j$ and $\ell_2=m+j$, every $\delta_j$ is nonnegative. When every $r_i$ equals $\frac12$, $\sum_i\widetilde X_i$ and $\sum_i\widetilde Y_i$ form the symmetric binomial pair, $W$ has the law of $B_0$, and~\eqref{eq:average} equals $(D_m+D_{m+1})/2$ for that pair. By the symmetry $\Bin(n,\frac{1-g}2)\overset d=n-\Bin(n,\frac{1+g}2)$ this is $b_{2m}(g)$. Taking expectations in~\eqref{eq:expansion} under $W$ and under $B_0$ gives
+Let $B_0$ have the law $\Bin(2m,\frac12)$, and put $\delta_j=\Pp(|W-m|\le j)-\Pp(|B_0-m|\le j)$ for $0\le j\le m-1$. By~\eqref{eq:hoeffding} with $\ell_1=m-j$ and $\ell_2=m+j$, every $\delta_j$ is nonnegative. When every $r_i$ equals $\frac12$, $\sum_i\widetilde X_i$ and $\sum_i\widetilde Y_i$ form the symmetric binomial pair, $W$ has the law of $B_0$, and~\eqref{eq:average} equals $(D_m+D_{m+1})/2$ for that pair. By the symmetry $\Bin(2m,\frac{1-g}2)\overset d=2m-\Bin(2m,\frac{1+g}2)$ this is $b_{2m}(g)$. Taking expectations in~\eqref{eq:expansion} under $W$ and under $B_0$ gives
 \begin{equation}\label{eq:exact}
 \frac{D_m+D_{m+1}}2-b_{2m}(g)=\sum_{j=0}^{m-1}A_j\delta_j\ \ge0 .
 \end{equation}
@@ -198,7 +203,7 @@ For $1\le j\le m-1$ we have $a+mg/(j+1)\ge a+g=1$ and $g^j\ge g^{m-1}$. The rati
 \]
 so it is at least its value $(m+1)/3$ at $j=1$. For $j=0$ we use $m-1\ge(m+1)/3$ and $g\ge g^{m-1}$. Therefore $A_j/(2j+1)\ge\frac{m+1}6g^{m-1}a^m$ for every $j$, and~\eqref{eq:cstar} is at least $\frac{m+1}{24}g^{m-1}a^{m-2}$. This proves~\eqref{eq:equal}.
 
-Since $d_K(X,Y)\ge(D_m+D_{m+1})/2$, we get $d_K(X,Y)\ge b_n(g)$, with equality for $0<g<1$ only if $S_2=0$. Conversely, for the symmetric binomial pair the ratio $\Pp(X=k)/\Pp(Y=k)=\bigl((1+g)/(1-g)\bigr)^{2k-n}$ is below $1$ for $k<m$ and above $1$ for $k>m$, so $D_k$ is largest at $k=m$ and $d_K=b_n(g)$.
+Since $d_K(X,Y)\ge(D_m+D_{m+1})/2$, we get $d_K(X,Y)\ge b_{2m}(g)$, with equality for $0<g<1$ only if $S_2=0$. Conversely, for the symmetric binomial pair the ratio $\Pp(X=k)/\Pp(Y=k)=\bigl((1+g)/(1-g)\bigr)^{2k-n}$ is below $1$ for $k<m$ and above $1$ for $k>m$, so $D_k$ is largest at $k=m$ and $d_K(X,Y)=b_{2m}(g)$.
 \end{proof}
 
 \begin{remark}\label{rem:n2}
@@ -210,7 +215,7 @@ For $m=2$ one has $A_0=A_1/3$, so~\eqref{eq:exact} and~\eqref{eq:variance} give 
 \[
 \frac{D_m+D_{m+1}}2-b_{2m}(g)\le\frac1{4a^2}\max_{0\le j\le m-1}\frac{A_j}{2j+1}\,S_2 .
 \]
-Let $m\ge3$, and let $s_i=1-g$ for $m$ indices and $s_i=-(1-g)$ for the others. Then $W=m$ almost surely, and~\eqref{eq:exact} gives $\frac{D_m+D_{m+1}}2-b_{2m}(g)\ge A_0\delta_0=\frac{m-1}2g(1-g)^m\bigl(1-\binom{2m}m4^{-m}\bigr)$, whereas the last term of~\eqref{eq:equal} equals $\frac{m(m+1)}{12}g^{m-1}(1-g)^m$. The quotient of the two is $\frac{6(m-1)}{m(m+1)}\bigl(1-\binom{2m}m4^{-m}\bigr)g^{-(m-2)}$, so for $m\ge3$ and small $g$ the bound~\eqref{eq:equal} is far from the excess at this pair.
+Let $m\ge3$, and let $s_i=1-g$ for $m$ indices and $s_i=-(1-g)$ for the others. Then $W=m$ almost surely, and~\eqref{eq:exact} gives $\frac{D_m+D_{m+1}}2-b_{2m}(g)\ge A_0\delta_0=\frac{m-1}2g(1-g)^m\bigl(1-\binom{2m}m4^{-m}\bigr)$, whereas the last term of~\eqref{eq:equal} equals $\frac{m(m+1)}{12}g^{m-1}(1-g)^m$. The quotient of the two is $\frac{6(m-1)}{m(m+1)}\bigl(1-\binom{2m}m4^{-m}\bigr)g^{-(m-2)}$, so for $m\ge3$ and small $g$ the bound~\eqref{eq:equal} is far from the excess of $(D_m+D_{m+1})/2$ at this pair.
 \end{remark}
 
 \begin{remark}\label{rem:b2m}
@@ -242,7 +247,7 @@ in which every term is nonnegative.
 \end{proof}
 
 \begin{proof}[Proof of \cref{thm:four}]
-For $z\in\{-1,1\}^4$ let $M(z)$ be $1$, $0$ or $-1$ according as the number of positive coordinates is larger than, equal to or smaller than two, and let $e_k$ be the $k$-th elementary symmetric polynomial in four variables. Checking the five possible numbers of positive signs shows $M=(3e_1-e_3)/8$. If $z_i=2X_i-1$, then $M(z)=\mathbf 1_{\{X\ge2\}}+\mathbf 1_{\{X\ge3\}}-1$, and similarly for $Y$; hence $D_2+D_3=\E M(2X_\bullet-1)-\E M(2Y_\bullet-1)$, where $2X_\bullet-1$ denotes the vector $(2X_i-1)_i$. The coordinates $2X_i-1$ are independent with means $s_i+d_i$, and the coordinates $2Y_i-1$ are independent with means $s_i-d_i$. Since $M$ is multilinear, each expectation is $(3e_1-e_3)/8$ evaluated at the vector of means. With $\sum_is_i=0$ one has $e_2(s)=-S_2/2$, and the part of $e_3(s+d)$ that is odd in $d$ equals $e_3(d)+\sum_id_i\bigl(s_i^2-S_2/2\bigr)=e_3(d)+Q$. Therefore
+For $z\in\{-1,1\}^4$ let $M(z)$ be $1$, $0$ or $-1$ according as the number of positive coordinates is larger than, equal to or smaller than two, and let $e_k$ be the $k$-th elementary symmetric polynomial of its arguments. Checking the five possible numbers of positive signs shows $M=(3e_1-e_3)/8$. If $z_i=2X_i-1$, then $M(z)=\mathbf 1_{\{X\ge2\}}+\mathbf 1_{\{X\ge3\}}-1$, and similarly for $Y$; hence $D_2+D_3=\E M(2X_\bullet-1)-\E M(2Y_\bullet-1)$, where $2X_\bullet-1$ denotes the vector $(2X_i-1)_i$. The coordinates $2X_i-1$ are independent with means $s_i+d_i$, and the coordinates $2Y_i-1$ are independent with means $s_i-d_i$. Since $M$ is multilinear, each expectation is $(3e_1-e_3)/8$ evaluated at the vector of means. With $\sum_is_i=0$ one has $e_2(s)=-S_2/2$, and the part of $e_3(s+d)$ that is odd in $d$ equals $e_3(d)+\sum_id_i\bigl(s_i^2-S_2/2\bigr)=e_3(d)+Q$. Therefore
 \begin{equation}\label{eq:avg4}
 \frac{D_2+D_3}2=\frac{3\Delta-e_3(d)-Q}8 .
 \end{equation}
@@ -277,7 +282,7 @@ Because at most one $y_i$ is negative, $y_1y_2y_3\le\frac1{27}$, either by its s
 C\ge1-\frac{x^2}9-\sigma^2\ge1-\frac{x^2}9-(1-x)^2=2x-\frac{10}9x^2\ge\frac89x .
 \end{equation}
 
-Next we show $\sigma C+G\ge0$, the value of $L/x$ at $t=\sigma$, which need not be a feasible point. If $\sigma=0$ then $G=0$. If $\sigma>0$ put $v_i=u_i/\sigma$, so that $v_1+v_2+v_3=1$, let $U$ and $F$ be as in \cref{lem:three}, and put $V=\sum_iv_i(1-y_i)\prod_{j\ne i}y_j$. Substituting the definitions of $C$ and $G$ and collecting terms gives
+Next we show that $\sigma C+G$, the value of $L/x$ at $t=\sigma$, is nonnegative; the point $t=\sigma$ need not be feasible. If $\sigma=0$ then $G=0$. If $\sigma>0$ put $v_i=u_i/\sigma$, so that $v_1+v_2+v_3=1$, let $U$ and $F$ be as in \cref{lem:three}, and put $V=\sum_iv_i(1-y_i)\prod_{j\ne i}y_j$. Substituting the definitions of $C$ and $G$ and collecting terms gives
 \begin{equation}\label{eq:regroup}
 \begin{aligned}
 \sigma C+G&=\sum_iu_i(1-y_i)+3x^2\sum_iu_i(1-y_i)\prod_{j\ne i}y_j-3\Bigl(\sigma\sum_iy_i\prod_{j\ne i}u_j-u_1u_2u_3\Bigr)\\
@@ -292,7 +297,7 @@ Combining~\eqref{eq:affine},~\eqref{eq:slope},~\eqref{eq:atk} and~\eqref{eq:Q},
 \[
 L=x\bigl(\sigma C+G+(t-\sigma)C\bigr)\ge\frac89x^2(t-\sigma)\ge\frac83Q .
 \]
-Undoing the reflection, $|L|\ge\frac83Q$ whenever $Q>0$.
+Since replacing $s$ by $-s$ changes only the sign of $L$, $|L|\ge\frac83Q$ whenever $Q>0$.
 
 For sharpness take $d=(t,0,0,0)$ and $s=(x,-\frac x3,-\frac x3,-\frac x3)$ with $x=1-t$ and $0<t<1$. This pair is feasible and centered, $Q=tx^2/3>0$ and $L=xt-tx^3/9$, so $|L|/Q=3/x-x/3$, which tends to $\frac83$ as $t\to0$.
 
@@ -300,7 +305,7 @@ Finally, the identity
 \begin{equation}\label{eq:gap}
 \frac{\Delta^3}{16}-e_3(d)=\frac1{48}\sum_{i<j}(d_i-d_j)^2\bigl[5\Delta-4(d_i+d_j)\bigr],
 \end{equation}
-together with~\eqref{eq:max4} and $b_4(\Delta/4)=\frac38\Delta-\frac1{128}\Delta^3$ (\cref{rem:b2m}), gives~\eqref{eq:four}. Each bracket in~\eqref{eq:gap} equals $\Delta+4(\Delta-d_i-d_j)\ge\Delta$. So if $\Delta>0$ and $d_K(X,Y)=b_4(g)$, then $\max(D_2,D_3)=b_4(g)$, both terms of~\eqref{eq:four} vanish, and all gaps are equal. Then $Q=-gS_2$, so $|L|-Q\ge gS_2$ forces $S_2=0$. The symmetric binomial pair attains equality, as shown at the end of \cref{sec:equal}.
+together with~\eqref{eq:max4} and $b_4(\Delta/4)=\frac38\Delta-\frac1{128}\Delta^3$ (\cref{rem:b2m}), gives~\eqref{eq:four}. Each bracket in~\eqref{eq:gap} equals $\Delta+4(\Delta-d_i-d_j)\ge\Delta$. So if $\Delta>0$ and $d_K(X,Y)=b_4(g)$, then $\max(D_2,D_3)=b_4(g)$, both terms of~\eqref{eq:four} vanish, and all gaps are equal. Then $Q=-gS_2$, so $|L|-Q\ge gS_2$ forces $S_2=0$. The symmetric binomial pair attains equality, by the last paragraph of the proof of \cref{thm:equal}.
 \end{proof}
 
 \begin{corollary}\label{cor:single}
@@ -311,6 +316,63 @@ If $n=4$, $\sum_is_i=0$ and only one gap is nonzero, say $d=(t,0,0,0)$, then $d_
 In~\eqref{eq:four} the three pairs $(1,j)$ contribute $t^2(5t-4t)=t^3$ each and the other pairs contribute nothing, so the first term is $3t^3/384=t^3/128$.
 \end{proof}
 
+\section{Six summands}\label{sec:six}
+For $n=6$ and centered pairs the argument that gives~\eqref{eq:avg4} and~\eqref{eq:diff4} gives
+\[
+D_3-D_4=\frac{L_6}8,\qquad \frac{D_3+D_4}2=\frac{5\Delta-e_3(d)+e_5(d)-Q+H}{16},
+\]
+where $Q=\sum_i(d_i-\frac\Delta2)s_i^2$ as in \cref{thm:four}, now with six summands, and, writing $s^{(I)}$ for the vector $s$ with the coordinates indexed by $I$ removed,
+\[
+H=\sum_i d_i\,e_4\bigl(s^{(\{i\})}\bigr)+\sum_{|I|=3}\Bigl(\prod_{i\in I}d_i\Bigr)e_2\bigl(s^{(I)}\bigr),
+\]
+\[
+L_6=\sum_i s_id_i+O_4-5O_6,\qquad O_j=\frac{e_j(s+d)-e_j(s-d)}2 .
+\]
+For the symmetric binomial pair $Q=H=L_6=0$ and $\Delta=6g$, so $b_6(g)=(30g-20g^3+6g^5)/16$.
+
+\begin{proposition}\label{prop:six}
+For every centered pair with $n=6$,
+\begin{equation}\label{eq:six}
+\max(D_3,D_4)-b_6(g)=\frac{20g^3-6g^5-e_3(d)+e_5(d)}{16}+\frac{|L_6|-(Q-H)}{16},
+\end{equation}
+and the first term on the right is nonnegative.
+\end{proposition}
+
+\begin{proof}
+Since $\max(D_3,D_4)=(D_3+D_4)/2+|D_3-D_4|/2$ and $5\Delta=30g$, the two displays above and the value of $b_6(g)$ give~\eqref{eq:six}. Since $d_i\le1-|s_i|$, $d\in[0,1]^6$. For $\eta\in[0,1]^4$ we have $e_3(\eta)\le e_1(\eta)$, since the product of the three coordinates other than $\eta_k$ is at most $\eta_{k+1}$ (indices mod~$4$). If $d=(d_i,d_j,\eta)$ after a permutation, then
+\[
+e_3(d)-e_5(d)=d_id_j\bigl(e_1(\eta)-e_3(\eta)\bigr)+(d_i+d_j)\bigl(e_2(\eta)-e_4(\eta)\bigr)+e_3(\eta),
+\]
+so replacing $d_i$ and $d_j$ by their average does not decrease $e_3(d)-e_5(d)$. Averaging the largest and the smallest coordinate repeatedly converges to $(g,\dots,g)$, so by continuity $e_3(d)-e_5(d)\le20g^3-6g^5$.
+\end{proof}
+
+By \cref{prop:six}, the inequality
+\begin{equation}\label{eq:open6}
+Q-H\le|L_6|
+\end{equation}
+implies $\max(D_3,D_4)\ge b_6(g)$ for every centered pair with $n=6$. Neither inequality is known; \cite[Theorem~1.1]{Long} gives $d_K(X,Y)\ge b_6(g)$, in which the maximum is over all $k$. Three examples bear on~\eqref{eq:open6}.
+
+On the family $s=(\beta,-\beta,0,0,0,0)$, with $\tau=(d_3,\dots,d_6)$,
+\[
+Q-H=\beta^2\bigl(e_3(\tau)-e_1(\tau)\bigr)\le0,\qquad L_6=\beta(d_1-d_2)\bigl(1-e_2(\tau)+5e_4(\tau)\bigr),
+\]
+and both vanish when $\tau=(1,1,1,1)$, or when $\tau=0$ and $d_1=d_2$. So~\eqref{eq:open6} holds with equality, $Q-H=|L_6|=0$, at feasible pairs with $s\ne0$.
+
+In \cref{sec:four}, $Q>0$ forces some $s_i^2$ to exceed $S_2/2$. For $n=6$, $Q-H$ can be positive when no $s_i^2$ exceeds $S_2/2$: for
+\[
+s=\bigl(-\tfrac34,\tfrac12,\tfrac25,\tfrac25,-\tfrac{19}{20},\tfrac25\bigr),\qquad d=\bigl(0,0,0,0,\tfrac1{20},0\bigr),
+\]
+the largest $s_i^2/S_2$ is $\frac{361}{878}$, $Q-H=\frac1{20000}$ and $|L_6|=\frac{167}{2500}$.
+
+The analogue of the constant $\frac83$ of \cref{thm:four} cannot exceed~$2$: for $s=(\lambda,-\frac\lambda5,\dots,-\frac\lambda5)$ and $d=(\mu,1-\frac\lambda5,\dots,1-\frac\lambda5)$ with $0\le\mu\le1-\lambda$,
+\[
+Q-H=\frac{\lambda^2}{625}\bigl(500(1-\mu)-\lambda(1000-300\mu)+\lambda^2(365-35\mu)-37\lambda^3\bigr),
+\]
+\[
+L_6=\frac{8\lambda^2(5-\lambda)^2}{625}\bigl(5(1-\mu)-\lambda(5-2\mu)+2\lambda^2\bigr),
+\]
+so $|L_6|/(Q-H)\to2$ as $\lambda\to0$ for each fixed $\mu<1$.
+
 \section*{Acknowledgments and funding}
 The research presented in this paper was supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme (grant agreement No.~101041711), by the Simons Foundation as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning, by Heights Labs, by Convex Nexus Capital, and by the Israel Science Foundation (grants 2258/19 and 4101/25).
 
@@ -320,10 +382,10 @@ This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI),
 The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital. These entities are listed under Acknowledgments and funding above.
 
 \section*{Code and data availability}
-The \LaTeX\ source and the programs are available at \url{https://github.com/yspennstate/poisson-binomial-centered-separation}. They verify the identities~\eqref{eq:avg4},~\eqref{eq:diff4},~\eqref{eq:Q},~\eqref{eq:affine},~\eqref{eq:regroup},~\eqref{eq:gap} and the expansion in the proof of \cref{lem:three} in exact rational arithmetic, and evaluate~\eqref{eq:average},~\eqref{eq:jumps},~\eqref{eq:exact} and~\eqref{eq:variance} by exact convolution for $1{,}335$ rational parameter vectors with $n\le20$, and~\eqref{eq:equal} for the $1{,}280$ of them with $n\ge4$.
+The \LaTeX\ source and the programs are available at \url{https://github.com/yspennstate/poisson-binomial-centered-separation}. They verify the identities~\eqref{eq:avg4},~\eqref{eq:diff4},~\eqref{eq:Q},~\eqref{eq:affine},~\eqref{eq:regroup},~\eqref{eq:gap} and the expansion in the proof of \cref{lem:three} in exact rational arithmetic, and evaluate~\eqref{eq:average},~\eqref{eq:jumps},~\eqref{eq:exact} and~\eqref{eq:variance} by exact convolution for $1{,}335$ rational parameter vectors with $n\le20$, and~\eqref{eq:equal} for the $1{,}280$ of them with $n\ge4$. The programs \texttt{six\_summands\_identities.py} and \texttt{six\_summands\_gap.py} verify the two identities of \cref{sec:six}, the value of $b_6(g)$ and the identity in the proof of \cref{prop:six}. The program \texttt{six\_summands\_search.py} verifies the formulas of the three examples of \cref{sec:six}. It evaluates $Q-H$ and $L_6$ in floating point at $25{,}000$ feasible centered pairs with $n=6$, drawn in five classes described in the program; $17{,}132$ of them have no $s_i^2$ above $S_2/2$, $Q-H>0$ at $815$ of them ($83$ with no $s_i^2$ above $S_2/2$), and $Q-H>|L_6|$ at none of them.
 
 \section*{Declaration of generative AI and AI-assisted technologies}
-Codex (OpenAI) found the coupling of \cref{sec:equal} and the argument of \cref{sec:four} and wrote the verification programs; a second Codex run checked each claim with its own code. Claude (Anthropic) checked the proofs and wrote the text. The question is Kontorovich's~\cite{Kontorovich}, the inequality $d_K(X,Y)\ge b_n(g)$ and its equality cases are Long's~\cite{Long}, and the proof of \cref{thm:equal} rests on Hoeffding's interval comparison~\cite{Hoeffding}. The author selected the problem, directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+Codex (OpenAI) found the construction of \cref{sec:equal} and the argument of \cref{sec:four} and wrote the verification programs; a second Codex run checked each claim with its own code. Claude (Anthropic) found the argument of \cref{sec:six} and wrote its programs, checked the proofs and wrote the text. The question is Kontorovich's~\cite{Kontorovich}, the inequality $d_K(X,Y)\ge b_n(g)$ and its equality cases are Long's~\cite{Long}, and the proof of \cref{thm:equal} rests on Hoeffding's interval inequality~\cite{Hoeffding}. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
 
 \appendix
 \section{Notation}\label{app:notation}
@@ -338,11 +400,11 @@ $n$, $m$ & number of summands; $n=2m$ when $n$ is even & \cref{sec:intro}\\
 $d_i,s_i$ & $p_i-q_i$ and $p_i+q_i-1$ & \cref{sec:intro}\\
 $\Delta,g,S_2$ & $\sum_id_i$, mean gap $\Delta/n$, $\sum_is_i^2$ & \cref{sec:intro}\\
 $\Pp,\E$ & probability and expectation & \cref{sec:intro}\\
-$S$, $c$ & a sum of independent Bernoulli variables and an integer threshold in Hoeffding's tail comparison & \cref{sec:intro}\\
+$S$, $c$ & a sum of independent Bernoulli variables and an integer in Hoeffding's tail comparison & \cref{sec:intro}\\
 $D_k$, $d_K$ & $\Pp(X\ge k)-\Pp(Y\ge k)$; Kolmogorov distance & \cref{sec:intro}\\
 $\Bin(n,p)$, $b_n(g)$ & binomial variable; Kolmogorov distance of the symmetric binomial pair & \cref{sec:intro}\\
-$Q,L$ & the two polynomials of the case $n=4$ & \cref{sec:intro}\\
-$\ell_1,\ell_2$, $\bar r$ & integer endpoints in Hoeffding's interval comparison; mean of the parameters of $S$ in \eqref{eq:hoeffding} & \cref{sec:equal}\\
+$Q,L$ & $Q=\sum_i(d_i-\Delta/2)s_i^2$; $L$ the polynomial of \cref{thm:four} & \cref{sec:intro}\\
+$\ell_1,\ell_2$, $\bar r$ & integer endpoints in Hoeffding's interval inequality; mean of the parameters of $S$ in \eqref{eq:hoeffding} & \cref{sec:equal}\\
 $w$ & a value of $W$ & \cref{sec:intro}\\
 $a$ & $1-g$ & proof of \cref{thm:equal}\\
 $r_i$ & $\frac12+\frac{s_i}{2(1-g)}$ & \cref{sec:intro}\\
@@ -357,11 +419,14 @@ $B,B',\xi$ & $\Bin(m+j,g)$, $B+\xi$, a Bernoulli$(g)$ variable & proof of \cref{
 $A_j$ & jumps of $\phi$ & proof of \cref{thm:equal}\\
 $B_0$, $\delta_j$ & $\Bin(2m,\frac12)$; $\Pp(|W-m|\le j)-\Pp(|B_0-m|\le j)$ & proof of \cref{thm:equal}\\
 $c^*_{2m}(g)$ & coefficient of $S_2$ obtained from~\eqref{eq:variance} & \eqref{eq:cstar}\\
+$\gamma$ & a coefficient of $S_2$ in a lower bound for $(D_m+D_{m+1})/2-b_{2m}(g)$ & \cref{sec:intro}\\
 $y_i$, $v_i,U,F$ & variables of \cref{lem:three}, later coordinates of $s$; quantities of \cref{lem:three} & \cref{lem:three}\\
 $z$, $M$, $e_k$ & a sign vector; $1$, $0$ or $-1$ by the number of positive coordinates of $z$; elementary symmetric polynomials & proof of \cref{thm:four}\\
 $x,t,u_i,\sigma$ & coordinates of $s$ and $d$; $\sum_iu_i$ & proof of \cref{thm:four}\\
 $\rho,\kappa,\theta_i$ & $\sum_iy_i^2$, $(1-\rho)/2$, $(1+\rho)/2-y_i^2$ & proof of \cref{thm:four}\\
 $C,G,V$ & slope and intercept of $L/x$; an auxiliary sum & proof of \cref{thm:four}\\
+$H,L_6,O_j$ & the polynomials in $s$ and $d$ of the case $n=6$ & \cref{sec:six}\\
+$\eta;\beta,\tau;\lambda,\mu$ & a point of $[0,1]^4$; parameters of two families of pairs & \cref{sec:six}\\
 \bottomrule
 \end{tabular}
 \end{center}
